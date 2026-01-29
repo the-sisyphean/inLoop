@@ -1,87 +1,87 @@
 
-Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYPE html>
-<html lang=\"en\">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubs - Code Blooded Club OP</title>
-    <link rel=\"stylesheet\" href=\"styles.css\">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class=\"main-layout\">
+    <div class="main-layout">
         <!-- Top Navigation -->
-        <nav class=\"top-nav\">
-            <div class=\"brand\">
-                <i class=\"fas fa-graduation-cap\"></i>
+        <nav class="top-nav">
+            <div class="brand">
+                <i class="fas fa-graduation-cap"></i>
                 Code Blooded Club OP
             </div>
-            <div class=\"user-menu\">
-                <div class=\"user-avatar\" data-testid=\"user-avatar\">
-                    <i class=\"fas fa-user\"></i>
+            <div class="user-menu">
+                <div class="user-avatar" data-testid="user-avatar">
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class=\"dropdown-menu\" data-testid=\"user-dropdown\">
-                    <a href=\"#\" class=\"dropdown-item\" data-testid=\"edit-profile-link\">
-                        <i class=\"fas fa-user-edit\"></i>
+                <div class="dropdown-menu" data-testid="user-dropdown">
+                    <a href="#" class="dropdown-item" data-testid="edit-profile-link">
+                        <i class="fas fa-user-edit"></i>
                         Edit Profile
                     </a>
-                    <a href=\"#\" class=\"dropdown-item\" data-testid=\"change-password-link\">
-                        <i class=\"fas fa-lock\"></i>
+                    <a href="#" class="dropdown-item" data-testid="change-password-link">
+                        <i class="fas fa-lock"></i>
                         Change Password
                     </a>
-                    <a href=\"login.html\" class=\"dropdown-item\" data-testid=\"logout-link\">
-                        <i class=\"fas fa-sign-out-alt\"></i>
+                    <a href="login.html" class="dropdown-item" data-testid="logout-link">
+                        <i class="fas fa-sign-out-alt"></i>
                         Logout
                     </a>
                 </div>
             </div>
         </nav>
         
-        <div class=\"content-wrapper\">
+        <div class="content-wrapper">
             <!-- Main Content -->
-            <main class=\"main-content\" data-testid=\"clubs-main\">
-                <div class=\"section-header\">
-                    <h2 class=\"section-title\">All Clubs</h2>
-                    <div class=\"filter-chips\">
-                        <div class=\"chip active\" data-testid=\"filter-all\">All</div>
-                        <div class=\"chip\" data-testid=\"filter-tech\">
-                            <i class=\"fas fa-laptop-code\"></i> Tech
+            <main class="main-content" data-testid="clubs-main">
+                <div class="section-header">
+                    <h2 class="section-title">All Clubs</h2>
+                    <div class="filter-chips">
+                        <div class="chip active" data-testid="filter-all">All</div>
+                        <div class="chip" data-testid="filter-tech">
+                            <i class="fas fa-laptop-code"></i> Tech
                         </div>
-                        <div class=\"chip\" data-testid=\"filter-cultural\">
-                            <i class=\"fas fa-palette\"></i> Cultural
+                        <div class="chip" data-testid="filter-cultural">
+                            <i class="fas fa-palette"></i> Cultural
                         </div>
-                        <div class=\"chip\" data-testid=\"filter-sports\">
-                            <i class=\"fas fa-running\"></i> Sports
+                        <div class="chip" data-testid="filter-sports">
+                            <i class="fas fa-running"></i> Sports
                         </div>
-                        <div class=\"chip\" data-testid=\"filter-fest\">
-                            <i class=\"fas fa-star\"></i> Fest
+                        <div class="chip" data-testid="filter-fest">
+                            <i class="fas fa-star"></i> Fest
                         </div>
                     </div>
                 </div>
                 
-                <div class=\"clubs-grid\">
+                <div class="clubs-grid">
                     <!-- Club Card 1 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-coding\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-code\" style=\"color: #3B82F6;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-coding">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-code" style="color: #3B82F6;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Coding Club</h3>
-                                <span class=\"badge badge-tech\">
-                                    <i class=\"fas fa-laptop-code\"></i> Tech
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Coding Club</h3>
+                                <span class="badge badge-tech">
+                                    <i class="fas fa-laptop-code"></i> Tech
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Building the next generation of programmers through workshops, hackathons, and collaborative coding sessions.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>450 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>24 Events</span>
                                     </div>
                                 </div>
@@ -90,28 +90,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 2 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-music\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-music\" style=\"color: #EC4899;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-music">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-music" style="color: #EC4899;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Music Society</h3>
-                                <span class=\"badge badge-cultural\">
-                                    <i class=\"fas fa-palette\"></i> Cultural
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Music Society</h3>
+                                <span class="badge badge-cultural">
+                                    <i class="fas fa-palette"></i> Cultural
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Celebrating rhythm and melody through concerts, jam sessions, and music appreciation events.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>320 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>18 Events</span>
                                     </div>
                                 </div>
@@ -120,28 +120,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 3 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-sports\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #10B981 0%, #059669 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-basketball-ball\" style=\"color: #10B981;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-sports">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-basketball-ball" style="color: #10B981;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Sports Committee</h3>
-                                <span class=\"badge badge-sports\">
-                                    <i class=\"fas fa-running\"></i> Sports
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Sports Committee</h3>
+                                <span class="badge badge-sports">
+                                    <i class="fas fa-running"></i> Sports
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Promoting fitness and sportsmanship through tournaments, training camps, and athletic competitions.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>580 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>32 Events</span>
                                     </div>
                                 </div>
@@ -150,28 +150,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 4 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-drama\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-theater-masks\" style=\"color: #EC4899;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-drama">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-theater-masks" style="color: #EC4899;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Drama Club</h3>
-                                <span class=\"badge badge-cultural\">
-                                    <i class=\"fas fa-palette\"></i> Cultural
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Drama Club</h3>
+                                <span class="badge badge-cultural">
+                                    <i class="fas fa-palette"></i> Cultural
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Bringing stories to life through theatrical performances, street plays, and improvisational acts.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>240 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>15 Events</span>
                                     </div>
                                 </div>
@@ -180,28 +180,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 5 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-robotics\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-robot\" style=\"color: #3B82F6;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-robotics">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-robot" style="color: #3B82F6;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Robotics Lab</h3>
-                                <span class=\"badge badge-tech\">
-                                    <i class=\"fas fa-laptop-code\"></i> Tech
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Robotics Lab</h3>
+                                <span class="badge badge-tech">
+                                    <i class="fas fa-laptop-code"></i> Tech
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Exploring automation and AI through hands-on robotics projects, competitions, and innovation challenges.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>280 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>20 Events</span>
                                     </div>
                                 </div>
@@ -210,28 +210,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 6 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-techfest\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-trophy\" style=\"color: #F59E0B;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-techfest">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-trophy" style="color: #F59E0B;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">TechFest Committee</h3>
-                                <span class=\"badge badge-fest\">
-                                    <i class=\"fas fa-star\"></i> Fest
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">TechFest Committee</h3>
+                                <span class="badge badge-fest">
+                                    <i class="fas fa-star"></i> Fest
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Organizing the biggest tech festival on campus with competitions, exhibitions, and guest lectures.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>120 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>8 Events</span>
                                     </div>
                                 </div>
@@ -240,28 +240,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 7 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-photography\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-camera\" style=\"color: #EC4899;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-photography">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-camera" style="color: #EC4899;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Photography Club</h3>
-                                <span class=\"badge badge-cultural\">
-                                    <i class=\"fas fa-palette\"></i> Cultural
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Photography Club</h3>
+                                <span class="badge badge-cultural">
+                                    <i class="fas fa-palette"></i> Cultural
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Capturing moments and telling stories through lenses with photo walks, exhibitions, and workshops.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>195 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>12 Events</span>
                                     </div>
                                 </div>
@@ -270,28 +270,28 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
                     </a>
                     
                     <!-- Club Card 8 -->
-                    <a href=\"club-detail.html\" style=\"text-decoration: none;\">
-                        <div class=\"club-card\" data-testid=\"club-card-cricket\">
-                            <div class=\"club-banner\" style=\"background: linear-gradient(135deg, #10B981 0%, #059669 100%);\">
-                                <div class=\"club-logo\">
-                                    <i class=\"fas fa-baseball-ball\" style=\"color: #10B981;\"></i>
+                    <a href="club-detail.html" style="text-decoration: none;">
+                        <div class="club-card" data-testid="club-card-cricket">
+                            <div class="club-banner" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                <div class="club-logo">
+                                    <i class="fas fa-baseball-ball" style="color: #10B981;"></i>
                                 </div>
                             </div>
-                            <div class=\"club-card-body\">
-                                <h3 class=\"club-card-title\">Cricket Club</h3>
-                                <span class=\"badge badge-sports\">
-                                    <i class=\"fas fa-running\"></i> Sports
+                            <div class="club-card-body">
+                                <h3 class="club-card-title">Cricket Club</h3>
+                                <span class="badge badge-sports">
+                                    <i class="fas fa-running"></i> Sports
                                 </span>
-                                <p class=\"club-description\">
+                                <p class="club-description">
                                     Building cricket champions through regular practice, inter-college matches, and coaching programs.
                                 </p>
-                                <div class=\"club-stats\">
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-users\"></i>
+                                <div class="club-stats">
+                                    <div class="stat">
+                                        <i class="fas fa-users"></i>
                                         <span>380 Members</span>
                                     </div>
-                                    <div class=\"stat\">
-                                        <i class=\"fas fa-calendar\"></i>
+                                    <div class="stat">
+                                        <i class="fas fa-calendar"></i>
                                         <span>28 Events</span>
                                     </div>
                                 </div>
@@ -303,17 +303,17 @@ Action: file_editor create /app/frontend/public/clubs.html --file-text "<!DOCTYP
         </div>
         
         <!-- Bottom Navigation -->
-        <nav class=\"bottom-nav\" data-testid=\"bottom-nav\">
-            <a href=\"home.html\" class=\"nav-item\" data-testid=\"nav-home\">
-                <i class=\"fas fa-home\"></i>
+        <nav class="bottom-nav" data-testid="bottom-nav">
+            <a href="home.html" class="nav-item" data-testid="nav-home">
+                <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
-            <a href=\"calendar.html\" class=\"nav-item\" data-testid=\"nav-calendar\">
-                <i class=\"fas fa-calendar-alt\"></i>
+            <a href="calendar.html" class="nav-item" data-testid="nav-calendar">
+                <i class="fas fa-calendar-alt"></i>
                 <span>Calendar</span>
             </a>
-            <a href=\"clubs.html\" class=\"nav-item active\" data-testid=\"nav-clubs\">
-                <i class=\"fas fa-users\"></i>
+            <a href="clubs.html" class="nav-item active" data-testid="nav-clubs">
+                <i class="fas fa-users"></i>
                 <span>Clubs</span>
             </a>
         </nav>
