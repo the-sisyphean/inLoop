@@ -1,17 +1,8 @@
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-import {
-    getAuth,
-    setPersistence,
-    browserLocalPersistence
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
     apiKey: "AIzaSyBtyH9cZM36C2FWKuIIioNlF9bL6TfWsB0",
     authDomain: "inloop-a0f96.firebaseapp.com",
@@ -22,15 +13,11 @@ const firebaseConfig = {
     measurementId: "G-6PNH3TSJ5Q"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const fs = getFirestore(app);
 
-// 🔑 REQUIRED
-await setPersistence(auth, browserLocalPersistence);
-
 console.log("Firebase initialized");
-
 
