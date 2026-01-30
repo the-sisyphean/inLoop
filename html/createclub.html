@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - inLoop </title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- signup -->
+    <div class="login-container " >
+        <div class="login-card">
+            <div class="login-header">
+                <h1>inLoop</h1>
+                <p>Create your Club</p>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="clubName">Club Name </label>
+                    <input type="text" id="clubName" placeholder="e.g. Coding Club">
+                </div>
+
+                <div class="form-group">
+                    <label for="Description">Club Description</label>
+                    <input type="text" id="clubDesc"  placeholder="Describe your club..." rows="">
+                </div>
+
+                <div class="form-group">
+                    <label for="clubTag">Field</label>
+                    <input type="text" id="clubTag"  placeholder="e.g. Tech" >
+                </div>
+
+                <button type="button" class="login-btn" id="createClub">
+                    Create Club
+                </button>
+
+                <button type="button" class="cancel-btn" id="createClub">
+                    Cancel
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/createclub.js"></script>
+
+</body>
+
+</html>

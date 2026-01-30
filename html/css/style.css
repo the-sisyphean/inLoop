@@ -16,6 +16,11 @@
     --bg-card: #1E293B;
     --bg-hover: #334155;
 
+    --color-rose-soft: #FFE1E8;
+    --color-rose-light: #FFC9D6;
+    --color-rose-medium: #FFA3B8;
+    --color-rose-deep: #FF7D9A;
+
     --text-primary: #F1F5F9;
     --text-secondary: #CBD5E1;
     --text-muted: #94A3B8;
@@ -1250,4 +1255,18 @@ button {
   border-radius: 10px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 1rem;
+    background: rgb(251, 90, 90);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: var(--spacing-md);
 }
