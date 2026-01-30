@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("club-detail.js loaded");
 
-  // Get tab buttons
+  // ----- TAB BUTTONS -----
   const tabs = {
     posts: document.querySelector('[data-testid="tab-posts"]'),
     resources: document.querySelector('[data-testid="tab-resources"]'),
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     members: document.querySelector('[data-testid="tab-members"]')
   };
 
-  // Get content sections
+  // ----- TAB SECTIONS -----
   const sections = {
     posts: document.getElementById("posts-section"),
     resources: document.getElementById("resources-section"),
@@ -17,24 +17,40 @@ document.addEventListener("DOMContentLoaded", () => {
     members: document.getElementById("members-section")
   };
 
-  // Safety check (important)
-  if (!tabs.posts || !sections.posts) {
-    console.error("Tabs or sections not found");
-    return;
+  // ----- SAFETY CHECK -----
+  for (const key in tabs) {
+    if (!tabs[key] || !sections[key]) {
+      console.error(`Missing tab or section: ${key}`);
+      return;
+    }
   }
 
-  // Function to switch tabs
+  // ----- TAB SWITCH FUNCTION -----
   function showSection(active) {
-    Object.values(sections).forEach(sec => sec.style.display = "none");
-    Object.values(tabs).forEach(tab => tab.classList.remove("active"));
+    Object.values(sections).forEach(section => {
+      section.style.display = "none";
+    });
+
+    Object.values(tabs).forEach(tab => {
+      tab.classList.remove("active");
+    });
 
     sections[active].style.display = "block";
     tabs[active].classList.add("active");
   }
 
-  // Attach click listeners
+  // ----- CLICK HANDLERS -----
   tabs.posts.addEventListener("click", () => showSection("posts"));
   tabs.resources.addEventListener("click", () => showSection("resources"));
   tabs.calendar.addEventListener("click", () => showSection("calendar"));
   tabs.members.addEventListener("click", () => showSection("members"));
+
+  // ----- DEFAULT VIEW -----
+  showSection("posts");
+
+  // ----- READ CLUB FROM URL (for later Firebase use) -----
+  const params = new URLSearchParams(window.location.search);
+  const clubId = params.get("club") || "coding-club";
+
+  console.log("Viewing club:", clubId);
 });
