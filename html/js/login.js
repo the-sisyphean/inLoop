@@ -6,7 +6,14 @@ import {
   signInWithEmailAndPassword,
   setPersistence,
   browserLocalPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  sendEmailVerification,
+
+  signOut
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
@@ -31,8 +38,6 @@ showsignup.addEventListener("click", () => {
   signupform.classList.remove('hidden');
   loginform.classList.add('hidden');
 })
-
-
 
 //signup
 signupBtn.addEventListener("click", async (e) => {
@@ -73,7 +78,6 @@ signupBtn.addEventListener("click", async (e) => {
   
 });
 
-
 //sign in
 loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -101,4 +105,6 @@ loginBtn.addEventListener("click", async (e) => {
     console.error(error);
   }
 });
+
+
 
