@@ -43,8 +43,8 @@
                     <h2 class="section-title">All Clubs</h2>
                     <div class="filter-chips">
                         
-                        <div class="chip" data-testid="filter-tech">
-                            <a href="#"><i class="fa-solid fa-plus"></i> Create Club</a>
+                        <div class="chip hidden" id="createClubBtn"  data-testid="filter-tech">
+                            <a href="createclub.html" ><i class="fa-solid fa-plus"></i> Create Club</a>
                         </div>
                         <div class="chip " data-testid="filter-all">All</div>
                         <div class="chip" data-testid="filter-tech">
@@ -322,5 +322,7 @@
             </a>
         </nav>
     </div>
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/clubs.js"></script>
 </body>
 </html>

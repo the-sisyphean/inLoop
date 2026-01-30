@@ -442,6 +442,24 @@ button {
     transition: all 0.2s ease;
 }
 
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+
+
+
+
+
+
+
 .form-group input:focus {
     outline: none;
     border-color: var(--primary);
@@ -1453,4 +1471,22 @@ button {
     cursor: pointer;
     transition: all 0.2s ease;
     margin-top: var(--spacing-md);
+}
+
+
+.cancel-btn:hover {
+    background: rgb(245, 22, 22);
+    box-shadow: 0 6px 20px rgba(246, 59, 59, 0.4);
+    transform: translateY(-1px);
+}
+
+.form-textarea {
+     width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
