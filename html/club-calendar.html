@@ -10,80 +10,83 @@
 
 <body>
     <div class="main-layout">
-        <!-- Top Navigation -->
-        <nav class="top-nav">
-            <div class="brand">
-                <i class="fas fa-graduation-cap"></i>
-                inLoop
-            </div>
-            <div class="user-menu">
-                <div class="user-avatar" data-testid="user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-menu" data-testid="user-dropdown">
-                    <a href="#" class="dropdown-item" data-testid="edit-profile-link">
+
+        <body>
+            <div class="main-layout">
+                <!-- Top Navigation -->
+                <nav class="top-nav">
+                    <div class="brand">
+                        <i class="fas fa-graduation-cap"></i>
+                        <a href="home.html">inLoop</a>
+                    </div>
+                    <div class="user-menu">
+                        <div class="user-avatar" data-testid="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="dropdown-menu" data-testid="user-dropdown">
+                            <!-- <a href="#" class="dropdown-item" data-testid="edit-profile-link">
                         <i class="fas fa-user-edit"></i>
                         Edit Profile
-                    </a>
-                    <a href="#" class="dropdown-item" data-testid="change-password-link">
-                        <i class="fas fa-lock"></i>
-                        Change Password
-                    </a>
-                    <a href="login.html" class="dropdown-item" data-testid="logout-link">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout
-                    </a>
+                    </a> -->
+                            <a href="changepassword.html" class="dropdown-item" data-testid="change-password-link">
+                                <i class="fas fa-lock"></i>
+                                Change Password
+                            </a>
+                            <a href="login.html" class="dropdown-item" data-testid="logout-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="content-wrapper">
+                    <!-- Main Content -->
+                    <main class="main-content" data-testid="calendar-main">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <div class="month-nav">
+                                    <button id="prevMonth" class="nav-arrow">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+
+                                    <div class="month-title-wrapper">
+                                        <h2 id="monthLabel">January 2026</h2>
+                                    </div>
+                                    <button id="todayBtn">Today</button>
+
+                                    <button id="nextMonth" class="nav-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+                            <div class="calendar-grid">
+                                <div class="weekdays">
+                                    <div class="weekday">Sun</div>
+                                    <div class="weekday">Mon</div>
+                                    <div class="weekday">Tue</div>
+                                    <div class="weekday">Wed</div>
+                                    <div class="weekday">Thu</div>
+                                    <div class="weekday">Fri</div>
+                                    <div class="weekday">Sat</div>
+                                </div>
+
+                                <!-- Events Panel -->
+                                <div class="event-panel" id="eventPanel">
+                                    <h3 id="eventDateTitle">Select a date</h3>
+                                    <div id="eventList" class="event-list"></div>
+                                </div>
+
+                                <!-- ✅ ONLY ONE days container -->
+                                <div class="days" id="calendarDays"></div>
+                            </div>
+                        </div>
                 </div>
             </div>
-        </nav>
-
-        <div class="content-wrapper">
-            <!-- Main Content -->
-            <main class="main-content" data-testid="calendar-main">
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                        <div class="month-nav">
-                            <button id="prevMonth" class="nav-arrow">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-
-                            <div class="month-title-wrapper">
-                                <h2 id="monthLabel">January 2026</h2>
-                            </div>
-                            <button id="todayBtn">Today</button>
-
-                            <button id="nextMonth" class="nav-arrow">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-
-
-                    </div>
-
-                    <div class="calendar-grid">
-                        <div class="weekdays">
-                            <div class="weekday">Sun</div>
-                            <div class="weekday">Mon</div>
-                            <div class="weekday">Tue</div>
-                            <div class="weekday">Wed</div>
-                            <div class="weekday">Thu</div>
-                            <div class="weekday">Fri</div>
-                            <div class="weekday">Sat</div>
-                        </div>
-
-                        <!-- Events Panel -->
-                        <div class="event-panel" id="eventPanel">
-                            <h3 id="eventDateTitle">Select a date</h3>
-                            <div id="eventList" class="event-list"></div>
-                        </div>
-
-                        <!-- ✅ ONLY ONE days container -->
-                        <div class="days" id="calendarDays"></div>
-                    </div>
-                </div>
-        </div>
-    </div>
-    </main>
+            </main>
     </div>
 
     <!-- Bottom Navigation -->

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,38 +9,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <div class="main-layout">
-=======
-    <div class="main-layout">
-        <!-- Top Navigation -->
-        <nav class="top-nav">
-            <div class="brand">
-                <i class="fas fa-graduation-cap"></i>
-                inLoop
-            </div>
-            <div class="user-menu">
-                <div class="user-avatar" data-testid="user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-menu" data-testid="user-dropdown">
-                    <!-- <a href="#" class="dropdown-item" data-testid="edit-profile-link">
-                        <i class="fas fa-user-edit"></i>
-                        Edit Profile
-                    </a> -->
-                    <a href="changepassword.html" class="dropdown-item" data-testid="change-password-link">
-                        <i class="fas fa-lock"></i>
-                        Change Password
-                    </a>
-                    <a href="login.html" class="dropdown-item" data-testid="logout-link">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout
-                    </a>
-                </div>
-            </div>
-        </nav>
->>>>>>> 40dda6d19e5327a99eee80234e8b20237c646ad3
-
     <!-- Top Navigation -->
     <nav class="top-nav">
       <div class="brand">
@@ -47,11 +17,26 @@
         <a href="home.html">inLoop</a>
       </div>
       <div class="user-menu">
-        <div class="user-avatar">
+        <div class="user-avatar" data-testid="user-avatar">
           <i class="fas fa-user"></i>
+        </div>
+        <div class="dropdown-menu" data-testid="user-dropdown">
+          <!-- <a href="#" class="dropdown-item" data-testid="edit-profile-link">
+                        <i class="fas fa-user-edit"></i>
+                        Edit Profile
+                    </a> -->
+          <a href="changepassword.html" class="dropdown-item" data-testid="change-password-link">
+            <i class="fas fa-lock"></i>
+            Change Password
+          </a>
+          <a href="login.html" class="dropdown-item" data-testid="logout-link">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
         </div>
       </div>
     </nav>
+
 
     <div class="content-wrapper">
       <main class="main-content">
@@ -120,7 +105,21 @@
               <div class="post-date">1 week ago</div>
             </div>
           </div>
+          <div id="postModal" class="modal hidden">
+            <div class="modal-content">
+              <h3>Create New Post</h3>
 
+              <input id="postTitle" placeholder="Post title" />
+              <textarea id="postContent" placeholder="Write something..."></textarea>
+
+              <input type="file" id="postImage" accept="image/*" />
+
+              <div class="modal-actions">
+                <button id="cancelPost" class="btn btn-secondary">Cancel</button>
+                <button id="publishPost" class="btn btn-primary">Post</button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </main>
@@ -148,4 +147,5 @@
 
   </div>
 </body>
+
 </html>

@@ -1,109 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resources - inLoop</title>
-  <link rel="stylesheet" href="./css/style.css"/>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
   <div class="main-layout">
 
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-      <div class="brand">
-        <i class="fas fa-graduation-cap"></i>
-        inLoop
+    <body>
+      <div class="main-layout">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+          <div class="brand">
+            <i class="fas fa-graduation-cap"></i>
+            <a href="home.html">inLoop</a>
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar" data-testid="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="dropdown-menu" data-testid="user-dropdown">
+              <!-- <a href="#" class="dropdown-item" data-testid="edit-profile-link">
+                        <i class="fas fa-user-edit"></i>
+                        Edit Profile
+                    </a> -->
+              <a href="changepassword.html" class="dropdown-item" data-testid="change-password-link">
+                <i class="fas fa-lock"></i>
+                Change Password
+              </a>
+              <a href="login.html" class="dropdown-item" data-testid="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="content-wrapper">
+          <main class="main-content">
+
+            <!-- Header -->
+            <div class="section-header">
+              <h2 class="section-title">Coding Club – Resources</h2>
+            </div>
+
+            <!-- Resources -->
+            <div class="resources-list">
+
+              <div class="resource-item">
+                <div class="resource-icon">
+                  <i class="fas fa-book"></i>
+                </div>
+                <div class="resource-info">
+                  <div class="resource-title">Python Programming Guide</div>
+                  <div class="resource-meta">PDF • 5.2 MB</div>
+                </div>
+              </div>
+
+              <div class="resource-item">
+                <div class="resource-icon">
+                  <i class="fas fa-video"></i>
+                </div>
+                <div class="resource-info">
+                  <div class="resource-title">Data Structures Video Lectures</div>
+                  <div class="resource-meta">YouTube Playlist</div>
+                </div>
+              </div>
+
+              <div class="resource-item">
+                <div class="resource-icon">
+                  <i class="fas fa-link"></i>
+                </div>
+                <div class="resource-info">
+                  <div class="resource-title">Competitive Programming Practice</div>
+                  <div class="resource-meta">LeetCode • Codeforces</div>
+                </div>
+              </div>
+
+              <div class="resource-item">
+                <div class="resource-icon">
+                  <i class="fas fa-file-code"></i>
+                </div>
+                <div class="resource-info">
+                  <div class="resource-title">Previous Hackathon Projects</div>
+                  <div class="resource-meta">GitHub Repository</div>
+                </div>
+              </div>
+
+              <div class="resource-item">
+                <div class="resource-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="resource-info">
+                  <div class="resource-title">Interview Preparation Guide</div>
+                  <div class="resource-meta">PDF • System Design & DSA</div>
+                </div>
+              </div>
+
+            </div>
+
+          </main>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+          <a href="club-detail.html" class="nav-item">
+            <i class="fas fa-newspaper"></i>
+            <span>Posts</span>
+          </a>
+          <a href="club-resources.html" class="nav-item active">
+            <i class="fas fa-folder"></i>
+            <span>Resources</span>
+          </a>
+          <a href="club-calendar.html" class="nav-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendar</span>
+          </a>
+          <a href="club-members.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Members</span>
+          </a>
+        </nav>
+
       </div>
-    </nav>
+    </body>
 
-    <div class="content-wrapper">
-      <main class="main-content">
-
-        <!-- Header -->
-        <div class="section-header">
-          <h2 class="section-title">Coding Club – Resources</h2>
-        </div>
-
-        <!-- Resources -->
-        <div class="resources-list">
-
-          <div class="resource-item">
-            <div class="resource-icon">
-              <i class="fas fa-book"></i>
-            </div>
-            <div class="resource-info">
-              <div class="resource-title">Python Programming Guide</div>
-              <div class="resource-meta">PDF • 5.2 MB</div>
-            </div>
-          </div>
-
-          <div class="resource-item">
-            <div class="resource-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <div class="resource-info">
-              <div class="resource-title">Data Structures Video Lectures</div>
-              <div class="resource-meta">YouTube Playlist</div>
-            </div>
-          </div>
-
-          <div class="resource-item">
-            <div class="resource-icon">
-              <i class="fas fa-link"></i>
-            </div>
-            <div class="resource-info">
-              <div class="resource-title">Competitive Programming Practice</div>
-              <div class="resource-meta">LeetCode • Codeforces</div>
-            </div>
-          </div>
-
-          <div class="resource-item">
-            <div class="resource-icon">
-              <i class="fas fa-file-code"></i>
-            </div>
-            <div class="resource-info">
-              <div class="resource-title">Previous Hackathon Projects</div>
-              <div class="resource-meta">GitHub Repository</div>
-            </div>
-          </div>
-
-          <div class="resource-item">
-            <div class="resource-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="resource-info">
-              <div class="resource-title">Interview Preparation Guide</div>
-              <div class="resource-meta">PDF • System Design & DSA</div>
-            </div>
-          </div>
-
-        </div>
-
-      </main>
-    </div>
-
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <a href="club-detail.html" class="nav-item">
-        <i class="fas fa-newspaper"></i>
-        <span>Posts</span>
-      </a>
-      <a href="club-resources.html" class="nav-item active">
-        <i class="fas fa-folder"></i>
-        <span>Resources</span>
-      </a>
-      <a href="club-calendar.html" class="nav-item">
-        <i class="fas fa-calendar-alt"></i>
-        <span>Calendar</span>
-      </a>
-      <a href="club-members.html" class="nav-item">
-        <i class="fas fa-users"></i>
-        <span>Members</span>
-      </a>
-    </nav>
-
-  </div>
-</body>
 </html>
