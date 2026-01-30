@@ -1229,3 +1229,15 @@ button {
     color: var(--text-primary);
 }
 
+.hidden {
+    display: none;
+}
+
+#showsignup {
+    color: white;
+}
+
+#showsignup:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
