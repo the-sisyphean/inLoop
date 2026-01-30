@@ -8,13 +8,13 @@ import {
   browserLocalPersistence,
   browserSessionPersistence
 }
-  from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 import { doc, getDoc, updateDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 await setPersistence(auth, browserLocalPersistence);
 
-const allowedDomain = ".iitr.ac.in"; // change this
+const allowedDomain = ".iitr.ac.in"; 
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const loginBtn = document.querySelector("#loginBtn");
@@ -41,7 +41,7 @@ loginBtn.addEventListener("click", async (e) => {
       createdAt: serverTimestamp()
     });
 
-    alert("Logged in successfully 🎉");
+    alert("Logged in successfully!");
     window.location.href = "home.html";
 
   } catch (err) {
