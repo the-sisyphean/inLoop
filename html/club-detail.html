@@ -105,7 +105,21 @@
               <div class="post-date">1 week ago</div>
             </div>
           </div>
+          <div id="postModal" class="modal hidden">
+            <div class="modal-content">
+              <h3>Create New Post</h3>
 
+              <input id="postTitle" placeholder="Post title" />
+              <textarea id="postContent" placeholder="Write something..."></textarea>
+
+              <input type="file" id="postImage" accept="image/*" />
+
+              <div class="modal-actions">
+                <button id="cancelPost" class="btn btn-secondary">Cancel</button>
+                <button id="publishPost" class="btn btn-primary">Post</button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </main>
