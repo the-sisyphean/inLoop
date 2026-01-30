@@ -604,6 +604,25 @@ button {
     margin-bottom: var(--spacing-md);
 }
 
+.event-names {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.event-name {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1E40AF;
+  font-size: 0.65rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .event-meta {
     display: flex;
     flex-direction: column;
