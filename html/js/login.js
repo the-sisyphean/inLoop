@@ -6,7 +6,14 @@ import {
   signInWithEmailAndPassword,
   setPersistence,
   browserLocalPersistence,
-  browserSessionPersistence
+  browserSessionPersistence,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  sendEmailVerification,
+
+  signOut
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
@@ -71,7 +78,6 @@ signupBtn.addEventListener("click", async (e) => {
   
 });
 
-
 //sign in
 loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -99,4 +105,6 @@ loginBtn.addEventListener("click", async (e) => {
     console.error(error);
   }
 });
+
+
 

@@ -1,103 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - inLoop </title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-<!-- signup -->
-<div class="login-container hidden" id="signupform">
+    <!-- signup -->
+    <div class="login-container hidden" id="signupform">
         <div class="login-card">
             <div class="login-header">
                 <h1>Code Blooded Club OP</h1>
                 <p>Create your Account</p>
             </div>
-            
+
             <form>
                 <div class="form-group">
                     <label for="email">Email </label>
-                    <input 
-                        type="text" 
-                        id="signupemail" 
-                        placeholder="Enter your email or roll number"
-                        data-testid="login-email-input"
-                    >
+                    <input type="text" id="signupemail" placeholder="Enter your email or roll number"
+                        data-testid="login-email-input">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="signuppassword" 
-                        placeholder="******"
-                        data-testid="login-password-input"
-                    >
+                    <input type="password" id="signuppassword" placeholder="******" data-testid="login-password-input">
                 </div>
 
                 <div class="form-group">
                     <label for="confirmpassword">Confirm Password</label>
-                    <input 
-                        type="password" 
-                        id="confirmpassword" 
-                        placeholder="******"
-                        data-testid="login-password-input"
-                    >
+                    <input type="password" id="confirmpassword" placeholder="******" data-testid="login-password-input">
                 </div>
-                
+
                 <button type="button" class="login-btn" data-testid="login-submit-button" id="signupBtn">
                     Create Account
                 </button>
             </form>
-            
+
         </div>
     </div>
 
 
 
-<!-- login -->
+    <!-- login -->
     <div class="login-container" id="loginform">
         <div class="login-card">
             <div class="login-header">
                 <h1>inLoop</h1>
                 <p>Welcome back! Sign in to your account</p>
             </div>
-            
+
             <form>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input 
-                        type="text" 
-                        id="email" 
-                        placeholder="Enter your email or roll number"
-                        data-testid="login-email-input"
-                    >
+                    <input type="text" id="email" placeholder="Enter your email or roll number"
+                        data-testid="login-email-input">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Enter your password"
-                        data-testid="login-password-input"
-                    >
+                    <input type="password" id="password" placeholder="Enter your password"
+                        data-testid="login-password-input">
                 </div>
-                
+
                 <button type="button" class="login-btn" data-testid="login-submit-button" id="loginBtn">
                     Login
                 </button>
             </form>
-            
+
             <div class="login-footer">
                 <!-- <i class="fas fa-info-circle"></i> -->
-                <p>Don't have an account ? <a id="showsignup" >Sign Up</a></p> 
+                <p>Don't have an account ? <a id="showsignup">Sign Up</a></p>
             </div>
+            <br>
+
         </div>
     </div>
     <script type="module" src="./js/firebase.js"></script>
     <script type="module" src="./js/login.js"></script>
 
 </body>
+
 </html>
