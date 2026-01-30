@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Coding Club - inLoop </title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Club - inLoop</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
+<<<<<<< HEAD
+  <div class="main-layout">
+=======
     <div class="main-layout">
         <!-- Top Navigation -->
         <nav class="top-nav">
@@ -36,323 +38,114 @@
                 </div>
             </div>
         </nav>
+>>>>>>> 40dda6d19e5327a99eee80234e8b20237c646ad3
 
-        <div class="content-wrapper">
-            <!-- Main Content -->
-            <main class="main-content" data-testid="club-detail-main">
-                <!-- Club Header -->
-                <div class="club-detail-header" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
-                    <div class="club-detail-info">
-                        <div class="club-detail-logo">
-                            <i class="fas fa-code" style="color: #3B82F6;"></i>
-                        </div>
-                        <h1 class="club-detail-name">Coding Club</h1>
-                        <span class="badge badge-tech" style="font-size: 0.9rem;">
-                            <i class="fas fa-laptop-code"></i> Tech
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Club Description -->
-                <div class="club-detail-description">
-                    <p>
-                        The Coding Club is dedicated to fostering a culture of programming excellence and innovation on
-                        campus. We organize regular hackathons, coding workshops, competitive programming sessions, and
-                        guest lectures from industry professionals.
-                    </p>
-                    <p>
-                        Whether you're a beginner or an experienced coder, our club provides the perfect environment to
-                        learn, collaborate, and build amazing projects. Join us to enhance your coding skills and
-                        connect with fellow tech enthusiasts!
-                    </p>
-                </div>
-
-                <!-- Tab Content - Posts Section (Default) -->
-                <div class="tab-content" id="posts-section" data-testid="posts-section">
-                    <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
-                    <div class="posts-grid">
-                        <div class="post-card" data-testid="post-card-1">
-                            <div class="post-image">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="post-content">
-                                <h3 class="post-title">Hackathon 2025 Winners Announced!</h3>
-                                <p class="post-text">
-                                    Congratulations to all participants! Team Alpha took first place with their
-                                    innovative AI-powered campus navigation system.
-                                </p>
-                                <div class="post-date">2 days ago</div>
-                            </div>
-                        </div>
-
-                        <div class="post-card" data-testid="post-card-2">
-                            <div class="post-image">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <div class="post-content">
-                                <h3 class="post-title">Web Development Workshop</h3>
-                                <p class="post-text">
-                                    Join us this Saturday for a hands-on workshop on React and modern web development.
-                                    All skill levels welcome!
-                                </p>
-                                <div class="post-date">5 days ago</div>
-                            </div>
-                        </div>
-
-                        <div class="post-card" data-testid="post-card-3">
-                            <div class="post-image">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="post-content">
-                                <h3 class="post-title">New Coding Club Merchandise</h3>
-                                <p class="post-text">
-                                    Get your exclusive Coding Club t-shirts and hoodies! Limited edition designs
-                                    available now.
-                                </p>
-                                <div class="post-date">1 week ago</div>
-                            </div>
-                        </div>
-
-                        <div class="post-card" data-testid="post-card-4">
-                            <div class="post-image">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="post-content">
-                                <h3 class="post-title">Competitive Programming Session</h3>
-                                <p class="post-text">
-                                    Practice dynamic programming and graph algorithms with our coding mentors every
-                                    Wednesday evening.
-                                </p>
-                                <div class="post-date">1 week ago</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Content - Resources Section (Hidden by default) -->
-                <div class="tab-content" id="resources-section" style="display: none;" data-testid="resources-section">
-                    <h2 style="margin-bottom: 1.5rem;">Learning Resources</h2>
-                    <div class="resources-list">
-                        <div class="resource-item" data-testid="resource-1">
-                            <div class="resource-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-title">Python Programming Guide</div>
-                                <div class="resource-meta">PDF • 5.2 MB • Updated 2 weeks ago</div>
-                            </div>
-                        </div>
-
-                        <div class="resource-item" data-testid="resource-2">
-                            <div class="resource-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-title">Data Structures Video Lectures</div>
-                                <div class="resource-meta">Video Playlist • 24 videos • 8 hours</div>
-                            </div>
-                        </div>
-
-                        <div class="resource-item" data-testid="resource-3">
-                            <div class="resource-icon">
-                                <i class="fas fa-link"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-title">Competitive Programming Practice</div>
-                                <div class="resource-meta">External Link • LeetCode & Codeforces</div>
-                            </div>
-                        </div>
-
-                        <div class="resource-item" data-testid="resource-4">
-                            <div class="resource-icon">
-                                <i class="fas fa-file-code"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-title">Previous Hackathon Projects</div>
-                                <div class="resource-meta">GitHub Repository • 45 projects</div>
-                            </div>
-                        </div>
-
-                        <div class="resource-item" data-testid="resource-5">
-                            <div class="resource-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="resource-info">
-                                <div class="resource-title">Interview Preparation Guide</div>
-                                <div class="resource-meta">PDF • 3.8 MB • System Design & Algorithms</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Content - Event Calendar Section (Hidden by default) -->
-                <a href="club-calendar.html" class="nav-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Calendar</span>
-                </a>
-                <div class="tab-content" id="calendar-section" style="display: none;" data-testid="calendar-section">
-
-                    <h2 style="margin-bottom: 1.5rem;">Upcoming Events</h2>
-                    <div class="events-grid">
-                        <div class="event-card" data-testid="club-event-1">
-                            <div class="event-header">
-                                <div class="event-club-icon club-icon tech">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="event-club-info">
-                                    <h4>Coding Club</h4>
-                                    <span class="badge badge-tech"><i class="fas fa-laptop-code"></i> Tech</span>
-                                </div>
-                            </div>
-                            <div class="event-body">
-                                <h3 class="event-title">Annual Hackathon 2025</h3>
-                                <div class="event-meta">
-                                    <div class="meta-item">
-                                        <i class="fas fa-calendar"></i>
-                                        <span>December 20, 10:00 AM</span>
-                                    </div>
-                                    <div class="meta-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>Computer Lab, Block A</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="event-card" data-testid="club-event-2">
-                            <div class="event-header">
-                                <div class="event-club-icon club-icon tech">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="event-club-info">
-                                    <h4>Coding Club</h4>
-                                    <span class="badge badge-tech"><i class="fas fa-laptop-code"></i> Tech</span>
-                                </div>
-                            </div>
-                            <div class="event-body">
-                                <h3 class="event-title">Web Development Workshop</h3>
-                                <div class="event-meta">
-                                    <div class="meta-item">
-                                        <i class="fas fa-calendar"></i>
-                                        <span>December 22, 2:00 PM</span>
-                                    </div>
-                                    <div class="meta-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>Seminar Hall 3</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="event-card" data-testid="club-event-3">
-                            <div class="event-header">
-                                <div class="event-club-icon club-icon tech">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div class="event-club-info">
-                                    <h4>Coding Club</h4>
-                                    <span class="badge badge-tech"><i class="fas fa-laptop-code"></i> Tech</span>
-                                </div>
-                            </div>
-                            <div class="event-body">
-                                <h3 class="event-title">Competitive Programming Contest</h3>
-                                <div class="event-meta">
-                                    <div class="meta-item">
-                                        <i class="fas fa-calendar"></i>
-                                        <span>December 28, 11:00 AM</span>
-                                    </div>
-                                    <div class="meta-item">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span>Online Platform</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Content - Members Section (Hidden by default) -->
-                <a href="club-members.html" class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>Members</span>
-                </a>
-                <h2 style="margin-bottom: 1.5rem;">Club Members</h2>
-                <div class="members-grid">
-                    <div class="member-card" data-testid="member-1">
-                        <div class="member-avatar" style="background: #3B82F6;">AR</div>
-                        <div class="member-name">Arjun Reddy</div>
-                        <div class="member-role">President</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-2">
-                        <div class="member-avatar" style="background: #EC4899;">PS</div>
-                        <div class="member-name">Priya Sharma</div>
-                        <div class="member-role">Vice President</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-3">
-                        <div class="member-avatar" style="background: #10B981;">VK</div>
-                        <div class="member-name">Vikram Kumar</div>
-                        <div class="member-role">Technical Lead</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-4">
-                        <div class="member-avatar" style="background: #F59E0B;">SN</div>
-                        <div class="member-name">Sneha Nair</div>
-                        <div class="member-role">Event Coordinator</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-5">
-                        <div class="member-avatar" style="background: #8B5CF6;">RG</div>
-                        <div class="member-name">Rahul Gupta</div>
-                        <div class="member-role">Member</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-6">
-                        <div class="member-avatar" style="background: #06B6D4;">AM</div>
-                        <div class="member-name">Ananya Mehta</div>
-                        <div class="member-role">Member</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-7">
-                        <div class="member-avatar" style="background: #EF4444;">KS</div>
-                        <div class="member-name">Karthik Singh</div>
-                        <div class="member-role">Member</div>
-                    </div>
-
-                    <div class="member-card" data-testid="member-8">
-                        <div class="member-avatar" style="background: #14B8A6;">DM</div>
-                        <div class="member-name">Divya Menon</div>
-                        <div class="member-role">Member</div>
-                    </div>
-                </div>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="brand">
+        <i class="fas fa-graduation-cap"></i>
+        <a href="home.html">inLoop</a>
+      </div>
+      <div class="user-menu">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
         </div>
-        </main>
-    </div>
-
-    <!-- Bottom Navigation for Club Detail -->
-    <nav class="bottom-nav">
-        <a href="club-detail.html" class="nav-item">
-            <i class="fas fa-newspaper"></i>
-            <span>Posts</span>
-        </a>
-        <a href="club-resources.html" class="nav-item">
-            <i class="fas fa-folder"></i>
-            <span>Resources</span>
-        </a>
-        <a href="club-calendar.html" class="nav-item">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Calendar</span>
-        </a>
-        <a href="club-members.html" class="nav-item">
-            <i class="fas fa-users"></i>
-            <span>Members</span>
-        </a>
+      </div>
     </nav>
 
+    <div class="content-wrapper">
+      <main class="main-content">
 
+        <!-- Club Header -->
+        <div class="club-detail-header" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
+          <div class="club-detail-info">
+            <div class="club-detail-logo">
+              <i class="fas fa-code" style="color: #3B82F6;"></i>
+            </div>
+            <h1 class="club-detail-name">Coding Club</h1>
+            <span class="badge badge-tech">
+              <i class="fas fa-laptop-code"></i> Tech
+            </span>
+          </div>
+        </div>
+
+        <!-- Club Description -->
+        <div class="club-detail-description">
+          <p>
+            The Coding Club fosters programming excellence through hackathons,
+            workshops, competitive programming, and guest lectures.
+          </p>
+        </div>
+
+        <!-- POSTS ONLY -->
+        <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
+
+        <div class="posts-grid">
+
+          <div class="post-card">
+            <div class="post-image">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="post-content">
+              <h3 class="post-title">Hackathon 2025 Winners Announced!</h3>
+              <p class="post-text">
+                Team Alpha won with an AI-powered campus navigation system.
+              </p>
+              <div class="post-date">2 days ago</div>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <div class="post-image">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="post-content">
+              <h3 class="post-title">Web Development Workshop</h3>
+              <p class="post-text">
+                Hands-on React workshop this Saturday. All levels welcome.
+              </p>
+              <div class="post-date">5 days ago</div>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <div class="post-image">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="post-content">
+              <h3 class="post-title">New Coding Club Merchandise</h3>
+              <p class="post-text">
+                Limited edition t-shirts and hoodies available now.
+              </p>
+              <div class="post-date">1 week ago</div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
     </div>
-    <script type="module" src="./js/club-detail.js"></script>
-</body>
 
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="club-detail.html" class="nav-item active">
+        <i class="fas fa-newspaper"></i>
+        <span>Posts</span>
+      </a>
+      <a href="club-resources.html" class="nav-item">
+        <i class="fas fa-folder"></i>
+        <span>Resources</span>
+      </a>
+      <a href="club-calendar.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Calendar</span>
+      </a>
+      <a href="club-members.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Members</span>
+      </a>
+    </nav>
+
+  </div>
+</body>
 </html>

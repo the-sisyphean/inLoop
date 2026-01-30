@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - inLoop </title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="main-layout">
         <!-- Top Navigation -->
         <nav class="top-nav">
+            <button id="menuToggle" class="menu-btn">
+                ☰
+            </button>
             <div class="brand">
                 <i class="fas fa-graduation-cap"></i>
-               i inLoop
+                inLoop
             </div>
             <div class="user-menu">
                 <div class="user-avatar" data-testid="user-avatar">
@@ -34,93 +39,93 @@
                 </div>
             </div>
         </nav>
-        
-        <div class="content-wrapper">
-            <!-- Left Sidebar -->
-            <aside class="sidebar" data-testid="sidebar">
-                <div class="sidebar-section">
-                    <div class="sidebar-title">My Clubs</div>
-                    
-                    <div class="club-item pinned" data-testid="club-item-coding">
-                        <div class="club-icon tech">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="club-info">
-                            <div class="club-name">Coding Club</div>
-                            <div class="club-category">Tech</div>
-                        </div>
-                        <i class="fas fa-star pin-icon"></i>
+
+        <!-- Left Sidebar -->
+        <aside id="sidebar" class="sidebar" data-testid="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">My Clubs</div>
+
+                <div class="club-item pinned" data-testid="club-item-coding">
+                    <div class="club-icon tech">
+                        <i class="fas fa-code"></i>
                     </div>
-                    
-                    <div class="club-item" data-testid="club-item-music">
-                        <div class="club-icon cultural">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div class="club-info">
-                            <div class="club-name">Music Society</div>
-                            <div class="club-category">Cultural</div>
-                        </div>
-                        <i class="far fa-star pin-icon"></i>
+                    <div class="club-info">
+                        <div class="club-name">Coding Club</div>
+                        <div class="club-category">Tech</div>
                     </div>
-                    
-                    <div class="club-item pinned" data-testid="club-item-sports">
-                        <div class="club-icon sports">
-                            <i class="fas fa-basketball-ball"></i>
-                        </div>
-                        <div class="club-info">
-                            <div class="club-name">Sports Committee</div>
-                            <div class="club-category">Sports</div>
-                        </div>
-                        <i class="fas fa-star pin-icon"></i>
-                    </div>
-                    
-                    <div class="club-item" data-testid="club-item-drama">
-                        <div class="club-icon cultural">
-                            <i class="fas fa-theater-masks"></i>
-                        </div>
-                        <div class="club-info">
-                            <div class="club-name">Drama Club</div>
-                            <div class="club-category">Cultural</div>
-                        </div>
-                        <i class="far fa-star pin-icon"></i>
-                    </div>
-                    
-                    <div class="club-item" data-testid="club-item-robotics">
-                        <div class="club-icon tech">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="club-info">
-                            <div class="club-name">Robotics Lab</div>
-                            <div class="club-category">Tech</div>
-                        </div>
-                        <i class="far fa-star pin-icon"></i>
-                    </div>
-                    
-                    <a href="clubs.html" style="margin-top: 1rem; display: block;">
-                        <button class="btn btn-secondary" style="width: 100%;" data-testid="manage-clubs-button">
-                            <i class="fas fa-cog"></i>
-                            Manage Clubs
-                        </button>
-                    </a>
+                    <i class="fas fa-star pin-icon"></i>
                 </div>
-            </aside>
-            
-            <!-- Main Content -->
+
+                <div class="club-item" data-testid="club-item-music">
+                    <div class="club-icon cultural">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="club-info">
+                        <div class="club-name">Music Society</div>
+                        <div class="club-category">Cultural</div>
+                    </div>
+                    <i class="far fa-star pin-icon"></i>
+                </div>
+
+                <div class="club-item pinned" data-testid="club-item-sports">
+                    <div class="club-icon sports">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="club-info">
+                        <div class="club-name">Sports Committee</div>
+                        <div class="club-category">Sports</div>
+                    </div>
+                    <i class="fas fa-star pin-icon"></i>
+                </div>
+
+                <div class="club-item" data-testid="club-item-drama">
+                    <div class="club-icon cultural">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <div class="club-info">
+                        <div class="club-name">Drama Club</div>
+                        <div class="club-category">Cultural</div>
+                    </div>
+                    <i class="far fa-star pin-icon"></i>
+                </div>
+
+                <div class="club-item" data-testid="club-item-robotics">
+                    <div class="club-icon tech">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="club-info">
+                        <div class="club-name">Robotics Lab</div>
+                        <div class="club-category">Tech</div>
+                    </div>
+                    <i class="far fa-star pin-icon"></i>
+                </div>
+
+                <a href="clubs.html" style="margin-top: 1rem; display: block;">
+                    <button class="btn btn-secondary" style="width: 100%;" data-testid="manage-clubs-button">
+                        <i class="fas fa-cog"></i>
+                        Manage Clubs
+                    </button>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
             <main class="main-content" data-testid="main-content">
                 <div class="section-header">
                     <h2 class="section-title">Today's Updates</h2>
                     <div class="filter-chips">
-                        <div class="chip active" data-testid="filter-all">All</div>
-                        <div class="chip" data-testid="filter-tech">Tech</div>
-                        <div class="chip" data-testid="filter-cultural">Cultural</div>
-                        <div class="chip" data-testid="filter-sports">Sports</div>
-                        <div class="chip" data-testid="filter-fest">Fest</div>
+                        <div class="chip active" data-category="all">All</div>
+                        <div class="chip" data-category="tech">Tech</div>
+                        <div class="chip" data-category="cultural">Cultural</div>
+                        <div class="chip" data-category="sports">Sports</div>
+                        <div class="chip" data-category="fest">Fest</div>
                     </div>
                 </div>
-                
+
                 <div class="events-grid">
                     <!-- Event Card 1 -->
-                    <div class="event-card" data-testid="event-card-hackathon">
+                    <div class="event-card" data-category="tech" data-testid="event-card-hackathon">
                         <div class="event-header">
                             <div class="event-club-icon club-icon tech">
                                 <i class="fas fa-code"></i>
@@ -148,9 +153,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Card 2 -->
-                    <div class="event-card" data-testid="event-card-concert">
+                    <div class="event-card" data-category="cultural" data-testid="event-card-concert">
                         <div class="event-header">
                             <div class="event-club-icon club-icon cultural">
                                 <i class="fas fa-music"></i>
@@ -178,9 +183,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Card 3 -->
-                    <div class="event-card" data-testid="event-card-tournament">
+                    <div class="event-card" data-category="sports" data-testid="event-card-tournament">
                         <div class="event-header">
                             <div class="event-club-icon club-icon sports">
                                 <i class="fas fa-basketball-ball"></i>
@@ -208,9 +213,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Card 4 -->
-                    <div class="event-card" data-testid="event-card-workshop">
+                    <div class="event-card" data-category="tech"data-testid="event-card-workshop">
                         <div class="event-header">
                             <div class="event-club-icon club-icon tech">
                                 <i class="fas fa-robot"></i>
@@ -238,9 +243,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Card 5 -->
-                    <div class="event-card" data-testid="event-card-drama">
+                    <div class="event-card" data-category="cultural" data-testid="event-card-drama">
                         <div class="event-header">
                             <div class="event-club-icon club-icon cultural">
                                 <i class="fas fa-theater-masks"></i>
@@ -268,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Event Card 6 -->
                     <div class="event-card" data-testid="event-card-techfest">
                         <div class="event-header">
@@ -301,23 +306,25 @@
                 </div>
             </main>
         </div>
-        
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav" data-testid="bottom-nav">
-            <a href="home.html" class="nav-item active" data-testid="nav-home">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="calendar.html" class="nav-item" data-testid="nav-calendar">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Calendar</span>
-            </a>
-            <a href="clubs.html" class="nav-item" data-testid="nav-clubs">
-                <i class="fas fa-users"></i>
-                <span>Clubs</span>
-            </a>
-        </nav>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" data-testid="bottom-nav">
+        <a href="home.html" class="nav-item active" data-testid="nav-home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="calendar.html" class="nav-item" data-testid="nav-calendar">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Calendar</span>
+        </a>
+        <a href="clubs.html" class="nav-item" data-testid="nav-clubs">
+            <i class="fas fa-users"></i>
+            <span>Clubs</span>
+        </a>
+    </nav>
     </div>
     <script type="module" src="./js/home.js"></script>
 </body>
+
 </html>
