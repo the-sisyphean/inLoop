@@ -14,15 +14,9 @@ import { doc, getDoc, updateDoc, setDoc, serverTimestamp } from "https://www.gst
 
 await setPersistence(auth, browserLocalPersistence);
 
-<<<<<<< HEAD
 const allowedDomain = ".iitr.ac.in"; // change this
 const loginemail = document.querySelector("#email");
 const loginpassword = document.querySelector("#password");
-=======
-const allowedDomain = ".iitr.ac.in"; 
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
->>>>>>> d5e1830e518e01d717db4519abbbc918227ff2be
 const loginBtn = document.querySelector("#loginBtn");
 const signupemail = document.querySelector("#signupemail");
 const signuppassword = document.querySelector("#signuppassword");
