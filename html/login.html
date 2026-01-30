@@ -7,7 +7,57 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="login-container">
+<!-- signup -->
+<div class="login-container hidden" id="signupform">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Code Blooded Club OP</h1>
+                <p>Create your Account</p>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="email">Email </label>
+                    <input 
+                        type="text" 
+                        id="signupemail" 
+                        placeholder="Enter your email or roll number"
+                        data-testid="login-email-input"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="signuppassword" 
+                        placeholder="******"
+                        data-testid="login-password-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="confirmpassword" 
+                        placeholder="******"
+                        data-testid="login-password-input"
+                    >
+                </div>
+                
+                <button type="button" class="login-btn" data-testid="login-submit-button" id="signupBtn">
+                    Create Account
+                </button>
+            </form>
+            
+        </div>
+    </div>
+
+
+
+<!-- login -->
+    <div class="login-container" id="loginform">
         <div class="login-card">
             <div class="login-header">
                 <h1>Code Blooded Club OP</h1>
@@ -16,7 +66,7 @@
             
             <form>
                 <div class="form-group">
-                    <label for="email">Email / Roll Number</label>
+                    <label for="email">Email</label>
                     <input 
                         type="text" 
                         id="email" 
@@ -41,8 +91,8 @@
             </form>
             
             <div class="login-footer">
-                <i class="fas fa-info-circle"></i>
-                Admin / User role will be decided automatically after login
+                <!-- <i class="fas fa-info-circle"></i> -->
+                <p>Don't have an account ? <a id="showsignup" >Sign Up</a></p> 
             </div>
         </div>
     </div>
