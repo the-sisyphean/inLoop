@@ -62,7 +62,7 @@ signupBtn.addEventListener("click", async (e) => {
 
     console.log(fs);
 
-    await setDoc(doc(fs, "users", cred.user.uid), {
+    await setDoc(doc(fs, "users", cred.user.email), {
       email: cred.user.email,
       createdAt: serverTimestamp()
     });
