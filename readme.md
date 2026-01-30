@@ -1,4 +1,4 @@
-🚀 inLoop
+🚀 inLoop 
 
 A unified campus platform to stay in the loop with student societies, events, and activities — all in one place.
 
