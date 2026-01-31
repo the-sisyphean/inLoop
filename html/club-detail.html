@@ -91,6 +91,12 @@
             
           </div>
           <div class="club-actions" id="clubActions">
+            <div class="club-detail-description">
+          <p>
+            The Coding Club fosters programming excellence through hackathons,
+            workshops, competitive programming, and guest lectures.
+          </p>
+        </div>
   <button class="btn primary" id="createPostBtn">+ Create Post</button>
   
   <button class="btn secondary" id="addEventBtn">+ Add Event</button>
@@ -99,42 +105,38 @@
         </div>
 
         <!-- Club Description -->
-        <div class="club-detail-description">
-          <p>
-            The Coding Club fosters programming excellence through hackathons,
-            workshops, competitive programming, and guest lectures.
-          </p>
-        </div>
+        
 <!-- createpost -->
-        <div class="login-container hidden" id="createclubform">
+        
+
+                <form id="createPostForm" class="hidden">
+                  <div class="login-container" >
             <div class="login-card">
                 <div class="login-header">
                     <h1>inLoop</h1>
-                    <p>Create your Club</p>
+                    <p>Create Post</p>
                 </div>
-
-                <form id="form">
                     <div class="form-group">
-                        <label for="clubName">Club Name </label>
-                        <input type="text" id="clubName" placeholder="e.g. Coding Club" required>
+                        <label for="clubName">Post Title </label>
+                        <input type="text" id="postTitle" placeholder="e.g.Web Development Workshop" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="Description">Club Description</label>
-                        <textarea id="clubDesc" class="form-textarea" placeholder="Describe your club..."
+                        <label for="Description">Post Description</label>
+                        <textarea id="postContent" class="form-textarea" placeholder="Describe your club..."
                             required></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="clubTag">Field</label>
                         <input type="text" id="clubTag" placeholder="e.g. Tech" required>
-                    </div>
+                    </div> -->
 
-                    <button type="submit" class="login-btn" id="createClub">
-                        Create Club
+                    <button type="submit" class="login-btn" id="createPost">
+                        Post
                     </button>
 
-                    <button type="button" class="cancel-btn">
+                    <button type="button" class="cancel-btn" id="Cancel">
                         Cancel
                     </button>
                 </form>
@@ -145,10 +147,11 @@
 
    
         <!-- POSTS ONLY -->
-        <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
-
-        <div class="posts-grid">
-
+         
+        <h2 style="margin-bottom: 1.5rem;" id="headingposts">Recent Posts</h2>
+<div class="posts-grid" id="postsContainer"></div>
+        
+<!-- 
           <div class="post-card">
             <div class="post-image">
               <i class="fas fa-trophy"></i>
@@ -160,33 +163,11 @@
               </p>
               <div class="post-date">2 days ago</div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="post-card">
-            <div class="post-image">
-              <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <div class="post-content">
-              <h3 class="post-title">Web Development Workshop</h3>
-              <p class="post-text">
-                Hands-on React workshop this Saturday. All levels welcome.
-              </p>
-              <div class="post-date">5 days ago</div>
-            </div>
-          </div>
+          
 
-          <div class="post-card">
-            <div class="post-image">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="post-content">
-              <h3 class="post-title">New Coding Club Merchandise</h3>
-              <p class="post-text">
-                Limited edition t-shirts and hoodies available now.
-              </p>
-              <div class="post-date">1 week ago</div>
-            </div>
-          </div>
+        
           <div id="postModal" class="modal hidden">
             <div class="modal-content">
               <h3>Create New Post</h3>

@@ -17,7 +17,7 @@ import {
 }
   from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-import { doc,query,where, getDoc,getDocs, updateDoc, setDoc, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { doc,query,where, getDoc,getDocs, updateDoc, setDoc, serverTimestamp, collection, addDoc,  orderBy } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 // document.addEventListener("DOMContentLoaded", () => {
 //   console.log("club-detail.js loaded");
 
@@ -86,6 +86,54 @@ const calendarDays = document.getElementById("calendarDays");
 const prevBtn = document.getElementById("prevMonth");
 const nextBtn = document.getElementById("nextMonth");
 const todayBtn = document.getElementById("todayBtn");
+const createPostBtn = document.querySelector("#createPostBtn");
+const clubdetailheader = document.querySelector(".club-detail-header")
+const headingposts =  document.querySelector("#headingposts")
+const Cancel = document.querySelector("#Cancel");
+
+
+createPostBtn.addEventListener("click", () => {
+  createPostForm.classList.remove('hidden');
+  postsContainer.classList.add('hidden');
+  clubdetailheader.classList.add('hidden');
+  headingposts.classList.add('hidden');
+})
+
+
+Cancel.addEventListener("click", () => {
+  createPostForm.classList.add('hidden');
+  postsContainer.classList.remove('hidden');
+  clubdetailheader.classList.remove('hidden');
+  headingposts.classList.remove('hidden');
+})
+
+
+createPostBtn.style.display = "none";
+addEventBtn.style.display = "none";
+
+/* ------------------ ADMIN CHECK ------------------ */
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return;
+
+  try {
+    const adminRef = doc(fs, "clubAdmins", user.email);
+    const adminSnap = await getDoc(adminRef);
+
+    if (!adminSnap.exists()) return;
+
+    const adminData = adminSnap.data();
+
+    if (adminData.clubs && adminData.clubs.includes(clubId)) {
+      // ✅ user is admin of this club
+      createPostBtn.style.display = "inline-block";
+      addEventBtn.style.display = "inline-block";
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
 
 const eventPanel = document.getElementById("eventPanel");
 const eventList = document.getElementById("eventList");
@@ -209,27 +257,225 @@ todayBtn.onclick = () => {
 renderCalendar();
 
 
-const clubActions = document.getElementById("clubActions");
+// const clubActions = document.getElementById("clubActions");
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    clubActions.style.display = "none";
+// onAuthStateChanged(auth, async (user) => {
+//   if (!user) {
+//     clubActions.style.display = "none";
+//     return;
+//   }
+
+//   const adminRef = doc(db, "clubAdmins", user.email);
+//   const adminSnap = await getDoc(adminRef);
+
+//   if (adminSnap.exists()) {
+//     clubActions.style.display = "flex";
+//   } else {
+//     clubActions.style.display = "none";
+//   }
+// });
+// document.getElementById("createPostBtn").onclick = () => {
+//   window.location.href = "c";
+// };
+
+// document.getElementById("addEventBtn").onclick = () => {
+//   window.location.href = "add-event.html";
+// };
+
+/* -------------------- GET CLUB ID -------------------- */
+const params = new URLSearchParams(window.location.search);
+const clubId = params.get("id");
+
+// if (!clubId) {
+//   console.error("Club ID missing in URL");
+//   alert("Invalid club link");
+//   throw new Error("Club ID missing in URL");
+// }
+
+/* -------------------- ELEMENTS -------------------- */
+const createPostForm = document.getElementById("createPostForm");
+const postsContainer = document.getElementById("postsContainer");
+
+/* -------------------- CREATE POST -------------------- */
+createPostForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!auth.currentUser) {
+    alert("Login required");
     return;
   }
 
-  const adminRef = doc(db, "clubAdmins", user.email);
-  const adminSnap = await getDoc(adminRef);
+  const title = document.getElementById("postTitle").value.trim();
+  const content = document.getElementById("postContent").value.trim();
 
-  if (adminSnap.exists()) {
-    clubActions.style.display = "flex";
-  } else {
-    clubActions.style.display = "none";
+  if (!title || !content) {
+    alert("All fields required");
+    return;
+  }
+
+  try {
+    await addDoc(collection(fs, "posts"), {
+      clubId: clubId,                 // ✅ VERY IMPORTANT
+      title: title,
+      content: content,
+      createdBy: auth.currentUser.email,
+      createdAt: serverTimestamp()
+    });
+    alert("post created ✅")
+    createPostForm.reset();
+    createPostForm.classList.add("hidden");
+    
+  postsContainer.classList.remove('hidden');
+  clubdetailheader.classList.remove('hidden');
+  headingposts.classList.remove('hidden');
+   
+    loadPosts(); // reload after posting
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
   }
 });
-document.getElementById("createPostBtn").onclick = () => {
-  window.location.href = "c";
-};
 
-document.getElementById("addEventBtn").onclick = () => {
-  window.location.href = "add-event.html";
-};
+/* -------------------- LOAD POSTS -------------------- */
+async function loadPosts() {
+  postsContainer.innerHTML = "";
+
+  try {
+    const postsRef = collection(fs, "posts");
+
+    const q = query(
+      postsRef,
+      where("clubId", "==", clubId),
+      orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      postsContainer.innerHTML = "<p>No posts yet</p>";
+      return;
+    }
+
+    snapshot.forEach((docSnap) => {
+      const post = docSnap.data();
+
+      postsContainer.innerHTML += `
+          <div class="post-card">
+            <div class="post-image">
+              <i class="fa-regular fa-message"></i>
+            </div>
+            <div class="post-content">
+              <h3 class="post-title">${post.title}</h3>
+              <p class="post-text">
+                ${post.content}
+              </p>
+              
+              <hr>
+              <br>
+              <div class="post-date"> Posted by ${post.createdBy}</div>
+            </div>
+          </div> 
+
+
+      `;
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+/* -------------------- INITIAL LOAD -------------------- */
+loadPosts();
+
+
+
+
+
+
+
+
+
+
+// const createPostForm = document.querySelector("#createPostForm")
+// const params = new URLSearchParams(window.location.search);
+// const clubId = params.get("id"); // ?id=abc123
+// createPostForm.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   if (!auth.currentUser) {
+//     alert("Login required");
+//     return;
+//   }
+  
+
+//   const title = document.getElementById("postTitle").value.trim();
+//   const content = document.getElementById("postContent").value.trim();
+
+//   if (!title || !content) return;
+
+//   try {
+//     await addDoc(collection(fs, "posts"), {
+//       clubId, // ✅ VERY IMPORTANT
+//       title,
+//       content,
+//       createdBy: auth.currentUser.email,
+//       createdAt: serverTimestamp()
+//     });
+//     
+
+//     createPostForm.reset();
+//     createPostForm.classList.add("hidden");
+
+//     loadPosts(clubId); // ✅ reload correctly
+//   } catch (err) {
+//     alert(err.message);
+//   }
+// });
+// async function loadPosts(clubId) {
+//   postsContainer.innerHTML = "";
+
+//   const postsRef = collection(fs, "posts");
+
+//   const q = query(
+//     postsRef,
+//     where("clubId", "==", clubId),
+//     orderBy("createdAt", "desc")
+//   );
+
+//   const snapshot = await getDocs(q);
+
+//   if (snapshot.empty) {
+//     postsContainer.innerHTML = "<p>No posts yet</p>";
+//     return;
+//   }
+
+//   snapshot.forEach((docSnap) => {
+//     const post = docSnap.data();
+
+//     postsContainer.innerHTML += `
+//     <div class="post-card">
+//             <div class="post-image">
+//               <i class="fas fa-chalkboard-teacher"></i>
+//             </div>
+//             <div class="post-content">
+//               <h3 class="post-title">${post.title}</h3>
+//               <p class="post-text">
+//                 ${post.content}
+//               </p>
+//               <div class="post-date">Posted by ${post.createdBy}</div>
+//             </div>
+//           </div>
+
+//     `;
+//   });
+// }
+// if (clubId) {
+//   loadPosts(clubId);
+// } else {
+//   console.error("Club ID missing in URL");
+// }
+// window.location.href = `club-detail.html?id=${club.id}`;
+// if (!clubId) {
+//   alert("Invalid club link");
+//   throw new Error("Club ID missing in URL");
+// }
