@@ -17,7 +17,7 @@ import {
 }
   from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-import { doc, getDoc,getDocs, updateDoc, setDoc, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { doc,query,where, getDoc,getDocs, updateDoc, setDoc, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 
 
@@ -124,7 +124,7 @@ createClub.addEventListener("click", async (e) => {
     await addDoc(collection(fs, "clubs"), {
       name: document.getElementById("clubName").value,
       description: document.getElementById("clubDesc").value,
-      field: document.getElementById("clubTag").value,
+      field: document.getElementById("clubTag").value.toLowerCase(), 
       createdBy: auth.currentUser.email,
       createdAt: new Date()
     });
@@ -133,7 +133,8 @@ createClub.addEventListener("click", async (e) => {
     createclubform.classList.add('hidden');
     clubs.classList.remove('hidden');
     clubfooter.classList.remove('hidden');
-    loadClubs();
+    // loadClubs();
+    loadClubs("all");
 
   } catch (err) {
     console.error(err);
@@ -147,21 +148,62 @@ createClub.addEventListener("click", async (e) => {
 const clubsRef = collection(fs, "clubs");
 const clubsContainer = document.getElementById("clubsContainer");
 
-async function loadClubs(category = "All") {
+// async function loadClubs(category = "All") {
+//   clubsContainer.innerHTML = "";
+
+//   let q = clubsRef;
+//   if (category !== "All") {
+//     q = query(clubsRef, where("category", "==", category));
+//   }
+
+//   const snapshot = await getDocs(q);
+
+//   snapshot.forEach(doc => {
+//     const club = doc.data();
+//     clubsContainer.innerHTML += clubCard(club);
+//   });
+// }
+// async function loadClubs(field = "all") {
+//   clubsContainer.innerHTML = "";
+
+//   let q = clubsRef;
+
+//   if (field !== "all") {
+//     q = query(clubsRef, where("field", "==", field));
+//   }
+
+//   const snapshot = await getDocs(q);
+
+//   snapshot.forEach(doc => {
+//     const club = doc.data();
+//     clubsContainer.innerHTML += clubCard(club);
+//   });
+// }
+
+
+let allClubs = [];
+async function loadClubs(field = "all") {
   clubsContainer.innerHTML = "";
+  allClubs = [];
 
   let q = clubsRef;
-  if (category !== "All") {
-    q = query(clubsRef, where("category", "==", category));
+
+  if (field !== "all") {
+    q = query(clubsRef, where("field", "==", field));
   }
 
   const snapshot = await getDocs(q);
 
-  snapshot.forEach(doc => {
-    const club = doc.data();
-    clubsContainer.innerHTML += clubCard(club);
+  snapshot.forEach((docSnap) => {
+    allClubs.push({
+      id: docSnap.id,
+      ...docSnap.data()
+    });
   });
+
+  renderClubs(allClubs);
 }
+
 
 function getFieldMeta(field) {
   const f = field;
@@ -194,33 +236,18 @@ function getFieldMeta(field) {
 
 
 
-// function clubCard(club) {
-//   return `
-//   <a href="club-detail.html" style="text-decoration: none;">
-//                         <div class="club-card" data-testid="club-card-coding">
-//                             <div class="club-banner"
-//                                 style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
-//                                 <div class="club-logo">
-//                                     <i class="fas fa-code" style="color: #3B82F6;"></i>
-//                                 </div>
-//                             </div>
-//                             <div class="club-card-body">
-//                                 <h3 class="club-card-title">${club.name}</h3>
-//                                 <span class="badge badge-tech">
-//                                     <i class="fas fa-laptop-code"></i> ${club.field}
-//                                 </span>
-//                                 <br>
-//                                 <p class="club-description">
-//                                    ${club.description}
-//                                 </p>
-//                                 <hr>
-                                
-//                             </div>
-//                         </div>
-//                     </a>
-  
-//   `;
-// }
+const chips = document.querySelectorAll(".chip");
+
+chips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    chips.forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+
+    const field = chip.dataset.field;
+    loadClubs(field);
+  });
+});
+
 
 function clubCard(club) {
   const meta = getFieldMeta(club.field);
@@ -258,3 +285,69 @@ function clubCard(club) {
   `;
   console.log("checked");
 }
+
+// let allClubs = [];
+// allClubs = [];
+
+// querySnapshot.forEach((docSnap) => {
+//   const club = { id: docSnap.id, ...docSnap.data() };
+//   allClubs.push(club);
+// });
+
+// renderClubs(allClubs);
+// function renderClubs(clubs) {
+//   clubsContainer.innerHTML = "";
+
+//   if (clubs.length === 0) {
+//     clubsContainer.innerHTML = "<p>No clubs found</p>";
+//     return;
+//   }
+
+//   clubs.forEach((club) => {
+//     createClub(club); // your existing card function
+//   });
+// }
+// const searchInput = document.getElementById("clubSearchInput");
+
+// searchInput.addEventListener("input", () => {
+//   const value = searchInput.value.toLowerCase().trim();
+
+//   const filtered = allClubs.filter((club) =>
+//     club.name.toLowerCase().includes(value) ||
+//     club.field.toLowerCase().includes(value)
+//   );
+
+//   renderClubs(filtered);
+// });
+
+
+function renderClubs(clubs) {
+  clubsContainer.innerHTML = "";
+
+  if (clubs.length === 0) {
+    clubsContainer.innerHTML = "<p>No clubs found</p>";
+    return;
+  }
+
+  clubs.forEach((club) => {
+    clubsContainer.innerHTML += clubCard(club);
+  });
+}
+const searchInput = document.getElementById("clubSearchInput");
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase().trim();
+
+  const filtered = allClubs.filter((club) =>
+    club.name.toLowerCase().includes(value) ||
+    club.field.toLowerCase().includes(value)
+  );
+
+  renderClubs(filtered);
+});
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const field = btn.dataset.field; // tech, cultural, sports, all
+    loadClubs(field);
+  });
+});
