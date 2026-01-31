@@ -17,7 +17,7 @@ import {
 }
   from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-import { doc, getDoc, updateDoc, setDoc, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { doc, getDoc,getDocs, updateDoc, setDoc, serverTimestamp, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 
 
@@ -90,11 +90,13 @@ onAuthStateChanged(auth, async (user) => {
 
   if (adminSnap.exists()) {
     createBtn.classList.remove('hidden');
-    console.log("admin came")
+    
   } else {
     createBtn.classList.add('hidden');
-    console.log("user came")
+    
   }
+
+  loadClubs();
 });
 
 
@@ -106,7 +108,7 @@ console.log("🔥 createClub.js loaded");
 createClub.addEventListener("click", async (e) => {
   e.preventDefault();
 
-  console.log("✅ submit intercepted");
+  
 
   if (!auth.currentUser) {
     alert("Not logged in");
@@ -131,6 +133,7 @@ createClub.addEventListener("click", async (e) => {
     createclubform.classList.add('hidden');
     clubs.classList.remove('hidden');
     clubfooter.classList.remove('hidden');
+    loadClubs();
 
   } catch (err) {
     console.error(err);
@@ -159,24 +162,99 @@ async function loadClubs(category = "All") {
     clubsContainer.innerHTML += clubCard(club);
   });
 }
+
+function getFieldMeta(field) {
+  const f = field;
+
+  if (f.includes("tech")|| f.includes("Tech")) {
+    return { icon: "fas fa-laptop-code", color: "#3B82F6", background: "linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%) "};
+  }
+  if (f.includes("cultural")|| f.includes("Cultural")) {
+    return { icon: "fas fa-palette", color: "#EC4899",background: "linear-gradient(135deg, #EC4899 0%, #BE185D 100%)"  };
+  }
+  if (f.includes("sports")|| f.includes("Sports")) {
+    return { icon: "fas fa-running", color: "#10B981",background: "linear-gradient(135deg, #10B981 0%, #059669 100%)" };
+  }
+  if (f.includes("fest")||f.includes("Fest")) {
+    return { icon: "fas fa-star", color: " #F59E0B", background: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)" };
+  }
+  // if (f.includes("dance")) {
+  //   return { icon: "fa-person-walking", color: "#F97316" };
+  // }
+  // if (f.includes("sports")) {
+  //   return { icon: "fa-football", color: "#22C55E" };
+  // }
+  // if (f.includes("literary") || f.includes("debate")) {
+  //   return { icon: "fa-book", color: "#F59E0B" };
+  // }
+
+  // default
+  // return { icon: "fa-users", color: "#6B7280" };
+}
+
+
+
+// function clubCard(club) {
+//   return `
+//   <a href="club-detail.html" style="text-decoration: none;">
+//                         <div class="club-card" data-testid="club-card-coding">
+//                             <div class="club-banner"
+//                                 style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
+//                                 <div class="club-logo">
+//                                     <i class="fas fa-code" style="color: #3B82F6;"></i>
+//                                 </div>
+//                             </div>
+//                             <div class="club-card-body">
+//                                 <h3 class="club-card-title">${club.name}</h3>
+//                                 <span class="badge badge-tech">
+//                                     <i class="fas fa-laptop-code"></i> ${club.field}
+//                                 </span>
+//                                 <br>
+//                                 <p class="club-description">
+//                                    ${club.description}
+//                                 </p>
+//                                 <hr>
+                                
+//                             </div>
+//                         </div>
+//                     </a>
+  
+//   `;
+// }
+
 function clubCard(club) {
+  const meta = getFieldMeta(club.field);
+  const isAdmin =
+    auth.currentUser &&
+    club.createdBy === auth.currentUser.email;
+
   return `
-    <div class="club-card">
-      <div class="club-header ${club.category.toLowerCase()}">
-        <div class="club-icon">${club.icon || "🏫"}</div>
-      </div>
-
-      <div class="club-body">
-        <h3>${club.name}</h3>
-
-        <span class="badge ${club.category.toLowerCase()}">
-          ${club.category}
-        </span>
-
-        <p>${club.description}</p>
-
+    <a href="club-detail.html" style="text-decoration: none;">
+      <div class="club-card">
+      ${isAdmin ? `<span class="admin-badge">Admin</span>` : ""}
+      
+        <div class="club-banner"
+          style="background: ${meta.background};">
+          
+          <div class="club-logo">
+            <i class="fas ${meta.icon}" style="color: ${meta.color};"></i>
+          </div>
+        </div>
         
+        <div class="club-card-body">
+          <h3 class="club-card-title">${club.name}</h3>
+          <span class="badge badge-tech">
+            <i class="fas ${meta.icon}"></i> ${club.field}
+          </span>
+          <br>
+          <br>
+          <p class="club-description">
+            ${club.description}
+          </p>
+          <hr>
+        </div>
       </div>
-    </div>
+    </a>
   `;
+  console.log("checked");
 }

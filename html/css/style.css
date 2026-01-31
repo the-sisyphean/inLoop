@@ -1059,6 +1059,8 @@ button {
     border: 1px solid var(--border);
     transition: all 0.3s ease;
     cursor: pointer;
+    min-height: 300px;
+    position: relative;
 }
 
 .club-card:hover {
@@ -1523,4 +1525,19 @@ button {
     color: var(--text-primary);
     font-size: 0.95rem;
     transition: all 0.2s ease;
+}
+
+
+.admin-badge {
+  position: absolute;
+   z-index: 20;
+  top: 10px;
+  right: 10px;
+  background: #f0a729;
+  color: #1F2937;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
 }
