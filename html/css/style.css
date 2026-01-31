@@ -1725,3 +1725,146 @@ button {
     color: #555;
     transform: scale(1.1);
 }
+
+/* --- UPDATED STYLES FOR CALENDAR & MODALS --- */
+
+/* Add Event Button */
+.primary-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
+}
+.primary-btn:hover {
+    background-color: #2563eb;
+}
+
+/* Modal Overlay */
+.event-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); /* Dimmed background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.hidden { display: none !important; }
+
+/* Modal Card */
+.event-modal-card {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.event-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+/* --- FORM STYLES --- */
+.form-group { margin-bottom: 15px; }
+.form-row { display: flex; gap: 10px; }
+.form-row .form-group { flex: 1; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #10b981; /* Green */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.submit-btn:hover { background-color: #059669; }
+
+/* --- EVENT CARD STYLES --- */
+.event-card-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 5px solid #ccc;
+    position: relative;
+}
+
+/* Category Colors */
+.event-card-item.border-tech { border-left-color: #3b82f6; }
+.event-card-item.border-cultural { border-left-color: #ef4444; }
+.event-card-item.border-sports { border-left-color: #10b981; }
+.event-card-item.border-general { border-left-color: #8b5cf6; }
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 8px;
+}
+.bg-tech { background-color: #3b82f6; }
+.bg-cultural { background-color: #ef4444; }
+.bg-sports { background-color: #10b981; }
+.bg-general { background-color: #8b5cf6; }
+
+/* Alarm Button */
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.alarm-btn {
+    background: none; border: none;
+    cursor: pointer; font-size: 1.2rem;
+    color: #aaa;
+    transition: transform 0.2s;
+}
+.alarm-btn:hover { transform: scale(1.1); color: #555; }
