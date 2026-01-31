@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubs - inLoop </title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="main-layout">
         <!-- Top Navigation -->
@@ -35,16 +36,73 @@
                 </div>
             </div>
         </nav>
-        
-        <div class="content-wrapper">
+
+
+        <!-- create club -->
+        <div class="login-container hidden" id="createclubform">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>inLoop</h1>
+                    <p>Create your Club</p>
+                </div>
+
+                <form id="form">
+                    <div class="form-group">
+                        <label for="clubName">Club Name </label>
+                        <input type="text" id="clubName" placeholder="e.g. Coding Club" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Description">Club Description</label>
+                        <textarea id="clubDesc" class="form-textarea" placeholder="Describe your club..."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clubTag">Field</label>
+                        <input type="text" id="clubTag" placeholder="e.g. Tech" required>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="createClub">
+                        Create Club
+                    </button>
+
+                    <button type="button" class="cancel-btn">
+                        Cancel
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="content-wrapper " id="clubs">
             <!-- Main Content -->
+
             <main class="main-content" data-testid="clubs-main">
                 <div class="section-header">
                     <h2 class="section-title">All Clubs</h2>
                     <div class="filter-chips">
-                        
-                        <div class="chip" data-testid="filter-tech">
-                            <a href="#"><i class="fa-solid fa-plus"></i> Create Club</a>
+
+                        <div class="chip hidden" id="createClubBtn" data-testid="filter-tech">
+                            <i class="fa-solid fa-plus"></i> Create Club
                         </div>
                         <div class="chip " data-testid="filter-all">All</div>
                         <div class="chip" data-testid="filter-tech">
@@ -61,12 +119,13 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="clubs-grid">
+
+                <div class="clubs-grid" id="clubsContainer">
                     <!-- Club Card 1 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-coding">
-                            <div class="club-banner" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
+                            <div class="club-banner"
+                                style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
                                 <div class="club-logo">
                                     <i class="fas fa-code" style="color: #3B82F6;"></i>
                                 </div>
@@ -77,7 +136,8 @@
                                     <i class="fas fa-laptop-code"></i> Tech
                                 </span>
                                 <p class="club-description">
-                                    Building the next generation of programmers through workshops, hackathons, and collaborative coding sessions.
+                                    Building the next generation of programmers through workshops, hackathons, and
+                                    collaborative coding sessions.
                                 </p>
                                 <div class="club-stats">
                                     <div class="stat">
@@ -91,10 +151,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 2 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-music">
                             <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
                                 <div class="club-logo">
@@ -121,10 +181,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 3 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-sports">
                             <div class="club-banner" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                 <div class="club-logo">
@@ -151,10 +211,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 4 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-drama">
                             <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
                                 <div class="club-logo">
@@ -182,9 +242,9 @@
                             </div>
                         </div>
                     </a>
-                    
+                     -->
                     <!-- Club Card 5 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-robotics">
                             <div class="club-banner" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
                                 <div class="club-logo">
@@ -211,10 +271,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 6 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-techfest">
                             <div class="club-banner" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
                                 <div class="club-logo">
@@ -241,10 +301,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 7 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-photography">
                             <div class="club-banner" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
                                 <div class="club-logo">
@@ -271,10 +331,10 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    
+                    </a> -->
+
                     <!-- Club Card 8 -->
-                    <a href="club-detail.html" style="text-decoration: none;">
+                    <!-- <a href="club-detail.html" style="text-decoration: none;">
                         <div class="club-card" data-testid="club-card-cricket">
                             <div class="club-banner" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
                                 <div class="club-logo">
@@ -301,13 +361,13 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> -->
                 </div>
             </main>
         </div>
-        
+
         <!-- Bottom Navigation -->
-        <nav class="bottom-nav" data-testid="bottom-nav">
+        <nav class="bottom-nav" data-testid="bottom-nav" id="club-bottom">
             <a href="home.html" class="nav-item" data-testid="nav-home">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
@@ -322,5 +382,8 @@
             </a>
         </nav>
     </div>
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/clubs.js"></script>
 </body>
+
 </html>
