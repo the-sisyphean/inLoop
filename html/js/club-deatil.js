@@ -92,24 +92,24 @@ const headingposts =  document.querySelector("#headingposts")
 const Cancel = document.querySelector("#Cancel");
 
 
-createPostBtn.addEventListener("click", () => {
-  createPostForm.classList.remove('hidden');
-  postsContainer.classList.add('hidden');
-  clubdetailheader.classList.add('hidden');
-  headingposts.classList.add('hidden');
-})
+// createPostBtn.addEventListener("click", () => {
+//   createPostForm.classList.remove('hidden');
+//   postsContainer.classList.add('hidden');
+//   clubdetailheader.classList.add('hidden');
+//   headingposts.classList.add('hidden');
+// })
 
 
-Cancel.addEventListener("click", () => {
-  createPostForm.classList.add('hidden');
-  postsContainer.classList.remove('hidden');
-  clubdetailheader.classList.remove('hidden');
-  headingposts.classList.remove('hidden');
-})
+// Cancel.addEventListener("click", () => {
+//   createPostForm.classList.add('hidden');
+//   postsContainer.classList.remove('hidden');
+//   clubdetailheader.classList.remove('hidden');
+//   headingposts.classList.remove('hidden');
+// })
 
 
-createPostBtn.style.display = "none";
-addEventBtn.style.display = "none";
+// createPostBtn.style.display = "none";
+// addEventBtn.style.display = "none";
 
 /* ------------------ ADMIN CHECK ------------------ */
 onAuthStateChanged(auth, async (user) => {
@@ -283,122 +283,20 @@ renderCalendar();
 // };
 
 /* -------------------- GET CLUB ID -------------------- */
-const params = new URLSearchParams(window.location.search);
-const clubId = params.get("id");
-
-// if (!clubId) {
-//   console.error("Club ID missing in URL");
-//   alert("Invalid club link");
-//   throw new Error("Club ID missing in URL");
-// }
-
-/* -------------------- ELEMENTS -------------------- */
-const createPostForm = document.getElementById("createPostForm");
-const postsContainer = document.getElementById("postsContainer");
-
-/* -------------------- CREATE POST -------------------- */
-createPostForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  if (!auth.currentUser) {
-    alert("Login required");
-    return;
-  }
-
-  const title = document.getElementById("postTitle").value.trim();
-  const content = document.getElementById("postContent").value.trim();
-
-  if (!title || !content) {
-    alert("All fields required");
-    return;
-  }
-
-  try {
-    await addDoc(collection(fs, "posts"), {
-      clubId: clubId,                 // ✅ VERY IMPORTANT
-      title: title,
-      content: content,
-      createdBy: auth.currentUser.email,
-      createdAt: serverTimestamp()
-    });
-    alert("post created ✅")
-    createPostForm.reset();
-    createPostForm.classList.add("hidden");
-    
-  postsContainer.classList.remove('hidden');
-  clubdetailheader.classList.remove('hidden');
-  headingposts.classList.remove('hidden');
-   
-    loadPosts(); // reload after posting
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-});
-
-/* -------------------- LOAD POSTS -------------------- */
-async function loadPosts() {
-  postsContainer.innerHTML = "";
-
-  try {
-    const postsRef = collection(fs, "posts");
-
-    const q = query(
-      postsRef,
-      where("clubId", "==", clubId),
-      orderBy("createdAt", "desc")
-    );
-
-    const snapshot = await getDocs(q);
-
-    if (snapshot.empty) {
-      postsContainer.innerHTML = "<p>No posts yet</p>";
-      return;
-    }
-
-    snapshot.forEach((docSnap) => {
-      const post = docSnap.data();
-
-      postsContainer.innerHTML += `
-          <div class="post-card">
-            <div class="post-image">
-              <i class="fa-regular fa-message"></i>
-            </div>
-            <div class="post-content">
-              <h3 class="post-title">${post.title}</h3>
-              <p class="post-text">
-                ${post.content}
-              </p>
-              
-              <hr>
-              <br>
-              <div class="post-date"> Posted by ${post.createdBy}</div>
-            </div>
-          </div> 
-
-
-      `;
-    });
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-/* -------------------- INITIAL LOAD -------------------- */
-loadPosts();
-
-
-
-
-
-
-
-
-
-
-// const createPostForm = document.querySelector("#createPostForm")
 // const params = new URLSearchParams(window.location.search);
-// const clubId = params.get("id"); // ?id=abc123
+// const clubId = params.get("id");
+
+// // if (!clubId) {
+// //   console.error("Club ID missing in URL");
+// //   alert("Invalid club link");
+// //   throw new Error("Club ID missing in URL");
+// // }
+
+// /* -------------------- ELEMENTS -------------------- */
+// const createPostForm = document.getElementById("createPostForm");
+// const postsContainer = document.getElementById("postsContainer");
+
+// /* -------------------- CREATE POST -------------------- */
 // createPostForm.addEventListener("submit", async (e) => {
 //   e.preventDefault();
 
@@ -406,76 +304,178 @@ loadPosts();
 //     alert("Login required");
 //     return;
 //   }
-  
 
 //   const title = document.getElementById("postTitle").value.trim();
 //   const content = document.getElementById("postContent").value.trim();
 
-//   if (!title || !content) return;
-
-//   try {
-//     await addDoc(collection(fs, "posts"), {
-//       clubId, // ✅ VERY IMPORTANT
-//       title,
-//       content,
-//       createdBy: auth.currentUser.email,
-//       createdAt: serverTimestamp()
-//     });
-//     
-
-//     createPostForm.reset();
-//     createPostForm.classList.add("hidden");
-
-//     loadPosts(clubId); // ✅ reload correctly
-//   } catch (err) {
-//     alert(err.message);
-//   }
-// });
-// async function loadPosts(clubId) {
-//   postsContainer.innerHTML = "";
-
-//   const postsRef = collection(fs, "posts");
-
-//   const q = query(
-//     postsRef,
-//     where("clubId", "==", clubId),
-//     orderBy("createdAt", "desc")
-//   );
-
-//   const snapshot = await getDocs(q);
-
-//   if (snapshot.empty) {
-//     postsContainer.innerHTML = "<p>No posts yet</p>";
+//   if (!title || !content) {
+//     alert("All fields required");
 //     return;
 //   }
 
-//   snapshot.forEach((docSnap) => {
-//     const post = docSnap.data();
+//   try {
+//     await addDoc(collection(fs, "posts"), {
+//       clubId: clubId,                 // ✅ VERY IMPORTANT
+//       title: title,
+//       content: content,
+//       createdBy: auth.currentUser.email,
+//       createdAt: serverTimestamp()
+//     });
+//     alert("post created ✅")
+//     createPostForm.reset();
+//     createPostForm.classList.add("hidden");
+    
+//   postsContainer.classList.remove('hidden');
+//   clubdetailheader.classList.remove('hidden');
+//   headingposts.classList.remove('hidden');
+   
+//     loadPosts(); // reload after posting
+//   } catch (err) {
+//     console.error(err);
+//     alert(err.message);
+//   }
+// });
 
-//     postsContainer.innerHTML += `
-//     <div class="post-card">
+// /* -------------------- LOAD POSTS -------------------- */
+// async function loadPosts() {
+//   postsContainer.innerHTML = "";
+
+//   try {
+//     const postsRef = collection(fs, "posts");
+
+//     const q = query(
+//       postsRef,
+//       where("clubId", "==", clubId),
+//       orderBy("createdAt", "desc")
+//     );
+
+//     const snapshot = await getDocs(q);
+
+//     if (snapshot.empty) {
+//       postsContainer.innerHTML = "<p>No posts yet</p>";
+//       return;
+//     }
+
+//     snapshot.forEach((docSnap) => {
+//       const post = docSnap.data();
+
+//       postsContainer.innerHTML += `
+//           <div class="post-card">
 //             <div class="post-image">
-//               <i class="fas fa-chalkboard-teacher"></i>
+//               <i class="fa-regular fa-message"></i>
 //             </div>
 //             <div class="post-content">
 //               <h3 class="post-title">${post.title}</h3>
 //               <p class="post-text">
 //                 ${post.content}
 //               </p>
-//               <div class="post-date">Posted by ${post.createdBy}</div>
+              
+//               <hr>
+//               <br>
+//               <div class="post-date"> Posted by ${post.createdBy}</div>
 //             </div>
-//           </div>
+//           </div> 
 
-//     `;
-//   });
+
+//       `;
+//     });
+//   } catch (err) {
+//     console.error(err);
+//   }
 // }
-// if (clubId) {
-//   loadPosts(clubId);
-// } else {
-//   console.error("Club ID missing in URL");
-// }
-// window.location.href = `club-detail.html?id=${club.id}`;
-// if (!clubId) {
-//   alert("Invalid club link");
-//   throw new Error("Club ID missing in URL");
-// }
+
+// /* -------------------- INITIAL LOAD -------------------- */
+// loadPosts();
+
+
+
+
+
+
+
+
+
+
+// // const createPostForm = document.querySelector("#createPostForm")
+// // const params = new URLSearchParams(window.location.search);
+// // const clubId = params.get("id"); // ?id=abc123
+// // createPostForm.addEventListener("submit", async (e) => {
+// //   e.preventDefault();
+
+// //   if (!auth.currentUser) {
+// //     alert("Login required");
+// //     return;
+// //   }
+  
+
+// //   const title = document.getElementById("postTitle").value.trim();
+// //   const content = document.getElementById("postContent").value.trim();
+
+// //   if (!title || !content) return;
+
+// //   try {
+// //     await addDoc(collection(fs, "posts"), {
+// //       clubId, // ✅ VERY IMPORTANT
+// //       title,
+// //       content,
+// //       createdBy: auth.currentUser.email,
+// //       createdAt: serverTimestamp()
+// //     });
+// //     
+
+// //     createPostForm.reset();
+// //     createPostForm.classList.add("hidden");
+
+// //     loadPosts(clubId); // ✅ reload correctly
+// //   } catch (err) {
+// //     alert(err.message);
+// //   }
+// // });
+// // async function loadPosts(clubId) {
+// //   postsContainer.innerHTML = "";
+
+// //   const postsRef = collection(fs, "posts");
+
+// //   const q = query(
+// //     postsRef,
+// //     where("clubId", "==", clubId),
+// //     orderBy("createdAt", "desc")
+// //   );
+
+// //   const snapshot = await getDocs(q);
+
+// //   if (snapshot.empty) {
+// //     postsContainer.innerHTML = "<p>No posts yet</p>";
+// //     return;
+// //   }
+
+// //   snapshot.forEach((docSnap) => {
+// //     const post = docSnap.data();
+
+// //     postsContainer.innerHTML += `
+// //     <div class="post-card">
+// //             <div class="post-image">
+// //               <i class="fas fa-chalkboard-teacher"></i>
+// //             </div>
+// //             <div class="post-content">
+// //               <h3 class="post-title">${post.title}</h3>
+// //               <p class="post-text">
+// //                 ${post.content}
+// //               </p>
+// //               <div class="post-date">Posted by ${post.createdBy}</div>
+// //             </div>
+// //           </div>
+
+// //     `;
+// //   });
+// // }
+// // if (clubId) {
+// //   loadPosts(clubId);
+// // } else {
+// //   console.error("Club ID missing in URL");
+// // }
+// // window.location.href = `club-detail.html?id=${club.id}`;
+// // if (!clubId) {
+// //   alert("Invalid club link");
+// //   throw new Error("Club ID missing in URL");
+// // }
