@@ -565,6 +565,7 @@ button {
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
+    /* left: 0; */
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -573,9 +574,13 @@ button {
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    transform: translateY(0px);
     transition: all 0.2s ease;
 }
+#adminmenu {
+ left: 0;
+}
+
 
 .user-menu:hover .dropdown-menu {
     opacity: 1;
