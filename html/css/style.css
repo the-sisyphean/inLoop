@@ -1152,12 +1152,24 @@ button {
     height: 240px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: nowrap;
+    align-items:center ;
+    justify-content: space-evenly;
     position: relative;
     margin: calc(-1 * var(--spacing-xl));
     margin-bottom: var(--spacing-xl);
 }
+
+
+#clubActions{
+    min-width: 50px;
+}
+
+
+
+
+
+
 
 .club-detail-info {
     text-align: center;
