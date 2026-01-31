@@ -1,28 +1,40 @@
 /* js/club-calendar.js */
 
-// =======================
-// 1. DATA
-// =======================
-const database_TechClub = [
+// ==========================================
+// 1. DATA MERGING LOGIC (Database + LocalStorage)
+// ==========================================
+
+const default_TechClub = [
     { id: 't1', title: "Hackathon Intro", date: "2026-01-05", time: "10:00 AM", category: "tech", clubName: "Tech Club", desc: "Intro to coding." },
     { id: 't2', title: "AI Workshop", date: "2026-01-15", time: "02:00 PM", category: "tech", clubName: "Tech Club", desc: "Learning Neural Networks." }
 ];
-const database_CulturalClub = [
+const default_CulturalClub = [
     { id: 'c1', title: "Salsa Night", date: "2026-01-15", time: "06:00 PM", category: "cultural", clubName: "Cultural Club", desc: "Dance workshop." },
     { id: 'c2', title: "Pottery Class", date: "2026-01-20", time: "11:00 AM", category: "cultural", clubName: "Cultural Club", desc: "Clay modeling basics." }
 ];
-const database_SportsClub = [
+const default_SportsClub = [
     { id: 's1', title: "Cricket Finals", date: "2026-01-25", time: "09:00 AM", category: "sports", clubName: "Sports Club", desc: "Inter-college match." },
     { id: 's2', title: "Morning Yoga", date: "2026-02-01", time: "06:00 AM", category: "sports", clubName: "Sports Club", desc: "Wellness session." }
 ];
 
-const masterCalendarData = [...database_TechClub, ...database_CulturalClub, ...database_SportsClub];
+function getMasterData() {
+    // 1. Combine Hardcoded Data
+    const hardcoded = [...default_TechClub, ...default_CulturalClub, ...default_SportsClub];
+    
+    // 2. Fetch User Data from Browser Memory
+    const storedEvents = JSON.parse(localStorage.getItem('myCustomEvents')) || [];
+    
+    // 3. Merge Both
+    return [...hardcoded, ...storedEvents];
+}
 
+// Initialize Data
+let masterCalendarData = getMasterData();
 let currentDate = new Date(); 
 
-// =======================
-// 2. RENDER CALENDAR
-// =======================
+// ==========================================
+// 2. RENDER CALENDAR UI
+// ==========================================
 function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -46,11 +58,14 @@ function renderCalendar() {
     // Current Month Days
     for (let i = 1; i <= lastDate; i++) {
         const currentLoopDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        
+        // Filter events for this specific day
         const eventsOnThisDay = masterCalendarData.filter(event => event.date === currentLoopDate);
         
         const today = new Date();
         const isToday = (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) ? "today" : "";
 
+        // Create Colored Dots
         let dotsHtml = "";
         if (eventsOnThisDay.length > 0) {
             dotsHtml = `<div class="dots-container">`;
@@ -70,10 +85,13 @@ function renderCalendar() {
     daysContainer.innerHTML = html;
 }
 
-// =======================
-// 3. MODAL LOGIC (With Alarm)
-// =======================
+// ==========================================
+// 3. VIEW EVENT MODAL (With Alarm)
+// ==========================================
 window.openDateModal = function(dateString) {
+    // Refresh data in case something was just added
+    masterCalendarData = getMasterData();
+    
     const events = masterCalendarData.filter(e => e.date === dateString);
     const modal = document.getElementById("eventModal");
     const modalList = document.getElementById("modalEventList");
@@ -96,6 +114,7 @@ window.openDateModal = function(dateString) {
                     </button>
                 </div>
                 <h4>${e.title}</h4>
+                <small style="color:#666; display:block; margin-bottom:5px;">Hosted by: ${e.clubName}</small>
                 <p>${e.desc}</p>
             </div>
         `).join("");
@@ -103,17 +122,15 @@ window.openDateModal = function(dateString) {
     modal.classList.remove("hidden");
 }
 
-// =======================
-// 4. ALARM FUNCTIONALITY
-// =======================
+// ==========================================
+// 4. ALARM LOGIC
+// ==========================================
 window.setReminder = function(eventTitle, btnElement) {
-    // Check browser support
     if (!("Notification" in window)) {
-        alert("This browser does not support desktop notifications");
+        alert("This browser does not support notifications");
         return;
     }
 
-    // Check permissions
     if (Notification.permission === "granted") {
         createNotification(eventTitle, btnElement);
     } else if (Notification.permission !== "denied") {
@@ -126,53 +143,101 @@ window.setReminder = function(eventTitle, btnElement) {
 }
 
 function createNotification(title, btn) {
-    // 1. Visual Feedback (Turn icon red)
+    // Visual Change (Red Bell)
     const icon = btn.querySelector("i");
     icon.classList.remove("far");
     icon.classList.add("fas");
     icon.style.color = "#e74c3c"; 
 
-    // 2. System Notification
+    // System Notification
     new Notification("Reminder Set!", {
         body: `We will remind you before: ${title}`,
         icon: "https://cdn-icons-png.flaticon.com/512/3239/3239952.png"
     });
 }
 
-// =======================
-// 5. STARTUP
-// =======================
+// ==========================================
+// 5. STARTUP & EVENT LISTENERS
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     renderCalendar();
 
-    // Attach listeners safely
-    const prevBtn = document.getElementById("prevMonth");
-    const nextBtn = document.getElementById("nextMonth");
-    const todayBtn = document.getElementById("todayBtn");
-    const closeBtn = document.getElementById("closeModal");
-    const modal = document.getElementById("eventModal");
-
-    if(prevBtn) prevBtn.addEventListener("click", () => {
+    // -- Calendar Navigation --
+    document.getElementById("prevMonth").addEventListener("click", () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar();
     });
-
-    if(nextBtn) nextBtn.addEventListener("click", () => {
+    document.getElementById("nextMonth").addEventListener("click", () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
     });
-
-    if(todayBtn) todayBtn.addEventListener("click", () => {
+    document.getElementById("todayBtn").addEventListener("click", () => {
         currentDate = new Date();
         renderCalendar();
     });
 
-    if(closeBtn) closeBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
-    });
+    // -- Modal Closing Logic --
+    const modals = document.querySelectorAll(".event-modal");
+    document.getElementById("closeModal").addEventListener("click", () => document.getElementById("eventModal").classList.add("hidden"));
+    document.getElementById("closeAddModal").addEventListener("click", () => document.getElementById("addEventModal").classList.add("hidden"));
     
-    // Close modal when clicking background
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) modal.classList.add("hidden");
+    // Close when clicking outside
+    window.onclick = function(event) {
+        if (event.target.classList.contains('event-modal')) {
+            event.target.classList.add("hidden");
+        }
+    }
+
+    // ============================
+    // 6. ADD EVENT LOGIC (New)
+    // ============================
+    const addModal = document.getElementById("addEventModal");
+    const addBtn = document.getElementById("addEventBtn");
+    const form = document.getElementById("newEventForm");
+
+    // Open Form
+    if(addBtn) addBtn.addEventListener("click", () => {
+        addModal.classList.remove("hidden");
+    });
+
+    // Submit Form
+    if(form) form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Get Values
+        const title = document.getElementById("evtTitle").value;
+        const date = document.getElementById("evtDate").value;
+        const timeInput = document.getElementById("evtTime").value;
+        const category = document.getElementById("evtCategory").value;
+        const desc = document.getElementById("evtDesc").value;
+
+        // Convert Time (14:00 -> 02:00 PM)
+        const timeObj = new Date(`1970-01-01T${timeInput}:00`);
+        const formattedTime = timeObj.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+
+        // Create Object
+        const newEvent = {
+            id: Date.now().toString(),
+            title: title,
+            date: date,
+            time: formattedTime,
+            category: category,
+            clubName: "User Event",
+            desc: desc
+        };
+
+        // Save to LocalStorage
+        const currentStored = JSON.parse(localStorage.getItem('myCustomEvents')) || [];
+        currentStored.push(newEvent);
+        localStorage.setItem('myCustomEvents', JSON.stringify(currentStored));
+
+        // Refresh Data & UI
+        masterCalendarData = getMasterData(); 
+        renderCalendar();
+
+        // Close & Reset
+        addModal.classList.add("hidden");
+        form.reset();
+        alert("Event successfully created!");
     });
 });
