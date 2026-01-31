@@ -1,209 +1,132 @@
-/* js/calendar-logic.js */
+/* js/club-calendar.js */
 
-// --- 1. MASTER DATABASE (The "Source of Truth") ---
-// Ideally, this data comes from your backend.
-const allEvents = [
-    {
-        id: 1,
-        title: "Python Bootcamp",
-        date: "2026-01-15", 
-        time: "10:00 AM",
-        clubId: "tech-club", // Used for filtering
-        category: "tech",    // Used for dot color
-        description: "A complete intro to Python programming."
-    },
-    {
-        id: 2,
-        title: "Salsa Workshop",
-        date: "2026-01-15",
-        time: "06:00 PM",
-        clubId: "dance-club",
-        category: "cultural",
-        description: "Learn Salsa basics."
-    },
-    {
-        id: 3,
-        title: "Cricket Finals",
-        date: "2026-01-20",
-        time: "09:00 AM",
-        clubId: "sports-club",
-        category: "sports",
-        description: "Inter-college cricket final match."
-    },
-    {
-        id: 4,
-        title: "Music Fest",
-        date: "2026-02-05",
-        time: "05:00 PM",
-        clubId: "music-club",
-        category: "fest",
-        description: "Live bands and food stalls."
-    }
+// ==========================================
+// 1. SIMULATING 3 SEPARATE DATABASES (CLUBS)
+// ==========================================
+
+const database_TechClub = [
+    { id: 't1', title: "Hackathon Intro", date: "2026-01-05", time: "10:00 AM", category: "tech", clubName: "Tech Club", desc: "Intro to coding." },
+    { id: 't2', title: "AI Workshop", date: "2026-01-15", time: "02:00 PM", category: "tech", clubName: "Tech Club", desc: "Learning Neural Networks." }
 ];
 
-// --- 2. CALENDAR STATE ---
-let currentDate = new Date(); // Keeps track of the currently viewed month
-let activeClubFilter = null;  // null = Master View, "string" = Club View
+const database_CulturalClub = [
+    { id: 'c1', title: "Salsa Night", date: "2026-01-15", time: "06:00 PM", category: "cultural", clubName: "Cultural Club", desc: "Dance workshop." },
+    { id: 'c2', title: "Pottery Class", date: "2026-01-20", time: "11:00 AM", category: "cultural", clubName: "Cultural Club", desc: "Clay modeling basics." }
+];
 
-// --- 3. CORE LOGIC: Generate the Grid ---
-function renderCalendar(filterClubId = null) {
-    activeClubFilter = filterClubId;
-    
-    // Select DOM elements
-    const monthYearText = document.getElementById("monthLabel");
-    const daysContainer = document.getElementById("calendarDays");
-    
-    // Clear previous days
-    daysContainer.innerHTML = "";
+const database_SportsClub = [
+    { id: 's1', title: "Cricket Finals", date: "2026-01-25", time: "09:00 AM", category: "sports", clubName: "Sports Club", desc: "Inter-college match." },
+    { id: 's2', title: "Morning Yoga", date: "2026-02-01", time: "06:00 AM", category: "sports", clubName: "Sports Club", desc: "Wellness session." }
+];
 
-    // Set variables for the viewed month
-    // Note: We clone the date to avoid mutating the global state accidentally during calculations
+// ==========================================
+// 2. THE MERGE LOGIC (Master Database)
+// ==========================================
+const masterCalendarData = [
+    ...database_TechClub, 
+    ...database_CulturalClub, 
+    ...database_SportsClub
+];
+
+// ==========================================
+// 3. INFINITE CALENDAR LOGIC
+// ==========================================
+
+let currentDate = new Date(); 
+
+function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
 
-    // Update Header Text
+    // Update Header
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    monthYearText.innerText = `${months[month]} ${year}`;
+    document.getElementById("monthLabel").innerText = `${months[month]} ${year}`;
 
-    // --- MATH FOR INFINITE DAYS ---
-    // 1. Get the first day of the month (0=Sun, 1=Mon...)
+    const daysContainer = document.getElementById("calendarDays");
+    daysContainer.innerHTML = ""; 
+
+    // Date Calculations
     const firstDayIndex = new Date(year, month, 1).getDay();
-    
-    // 2. Get the last date of the current month (e.g., 28, 30, 31)
-    const lastDate = new Date(year, month + 1, 0).getDate();
-    
-    // 3. Get the last date of the PREVIOUS month (for padding)
+    const lastDate = new Date(year, month + 1, 0).getDate(); 
     const prevLastDate = new Date(year, month, 0).getDate();
-    
-    // 4. Calculate next days padding (to fill the grid to 42 cells usually)
     const lastDayIndex = new Date(year, month + 1, 0).getDay();
     const nextDays = 7 - lastDayIndex - 1;
 
-    let calendarHTML = "";
+    let html = "";
 
-    // --- RENDER PREVIOUS MONTH DATES (Padding) ---
+    // Prev Month Padding
     for (let x = firstDayIndex; x > 0; x--) {
-        calendarHTML += `<div class="day other-month"><span class="day-number">${prevLastDate - x + 1}</span></div>`;
+        html += `<div class="day other-month">${prevLastDate - x + 1}</div>`;
     }
 
-    // --- RENDER CURRENT MONTH DATES ---
+    // Current Month
     for (let i = 1; i <= lastDate; i++) {
-        // Construct date string YYYY-MM-DD for comparison
-        const checkDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        const currentLoopDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        const eventsOnThisDay = masterCalendarData.filter(event => event.date === currentLoopDate);
         
-        // FILTER EVENTS:
-        // If activeClubFilter is null, we get ALL events (Master).
-        // If activeClubFilter is set, we only get events for that club.
-        let daysEvents = allEvents.filter(event => {
-            return event.date === checkDate && 
-                   (activeClubFilter ? event.clubId === activeClubFilter : true);
-        });
-
-        // Check if today
         const today = new Date();
         const isToday = (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) ? "today" : "";
 
         // Build Dots
-        let dotsHTML = "";
-        if (daysEvents.length > 0) {
-            dotsHTML = `<div class="event-indicators">`;
-            daysEvents.forEach(evt => {
-                dotsHTML += `<div class="event-dot" style="background: var(--${evt.category});"></div>`;
+        let dotsHtml = "";
+        if (eventsOnThisDay.length > 0) {
+            dotsHtml = `<div class="dots-container">`;
+            eventsOnThisDay.forEach(evt => {
+                dotsHtml += `<span class="dot ${evt.category}"></span>`;
             });
-            dotsHTML += `</div>`;
+            dotsHtml += `</div>`;
         }
 
-        // Add the day cell
-        // Note the onclick function passing the specific date
-        calendarHTML += `
-            <div class="day ${isToday}" onclick="openPopup('${checkDate}')">
+        html += `
+            <div class="day ${isToday}" onclick="openDateModal('${currentLoopDate}')">
                 <span class="day-number">${i}</span>
-                ${dotsHTML}
+                ${dotsHtml}
             </div>
         `;
     }
 
-    // --- RENDER NEXT MONTH DATES (Padding) ---
+    // Next Month Padding
     for (let j = 1; j <= nextDays; j++) {
-        calendarHTML += `<div class="day other-month"><span class="day-number">${j}</span></div>`;
+        html += `<div class="day other-month">${j}</div>`;
     }
 
-    // Inject into HTML
-    daysContainer.innerHTML = calendarHTML;
+    daysContainer.innerHTML = html;
 }
 
-// --- 4. NAVIGATION CONTROLS ---
-document.getElementById("prevMonth").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar(activeClubFilter);
-});
+// ==========================================
+// 4. MODAL & ALARM LOGIC
+// ==========================================
 
-document.getElementById("nextMonth").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar(activeClubFilter);
-});
-
-document.getElementById("todayBtn").addEventListener("click", () => {
-    currentDate = new Date();
-    renderCalendar(activeClubFilter);
-});
-
-
-// --- 5. POPUP FEATURE ---
-function openPopup(dateString) {
-    // 1. Filter events again for this specific clicked date
-    const eventsOnDay = allEvents.filter(event => {
-        return event.date === dateString && 
-               (activeClubFilter ? event.clubId === activeClubFilter : true);
-    });
-
-    // 2. If no events, do nothing (or show "No events" message if you prefer)
-    if (eventsOnDay.length === 0) return;
-
-    // 3. Populate Modal
+window.openDateModal = function(dateString) {
+    const events = masterCalendarData.filter(e => e.date === dateString);
     const modal = document.getElementById("eventModal");
     const modalList = document.getElementById("modalEventList");
     const modalTitle = document.getElementById("modalDateTitle");
-    
-    // Format date nicely (e.g., "Mon, Jan 15")
+
     const dateObj = new Date(dateString);
-    modalTitle.innerText = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' });
+    modalTitle.innerText = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 
-    // Generate List HTML
-    let listHTML = "";
-    eventsOnDay.forEach(evt => {
-        listHTML += `
-            <div class="event-card" style="border-left: 4px solid var(--${evt.category});">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h4>${evt.title}</h4>
-                    <span class="badge" style="background:var(--${evt.category}); color:#fff; font-size:0.7rem;">${evt.category}</span>
+    if (events.length === 0) {
+        modalList.innerHTML = `<p style="text-align:center; color:#888; padding:20px;">No events scheduled.</p>`;
+    } else {
+        // Inject Alarm Button Here
+        modalList.innerHTML = events.map(e => `
+            <div class="event-card-item border-${e.category}">
+                <div class="card-header-row">
+                    <div class="meta">
+                        <span class="time">${e.time}</span>
+                        <span class="badge bg-${e.category}">${e.category}</span>
+                    </div>
+                    <button class="alarm-btn" onclick="setReminder('${e.title}', this)">
+                        <i class="far fa-bell"></i>
+                    </button>
                 </div>
-                <div class="event-meta" style="margin-top:5px; color:#aaa;">
-                    <i class="far fa-clock"></i> ${evt.time} &nbsp;|&nbsp; 
-                    <i class="fas fa-users"></i> ${activeClubFilter ? 'This Club' : evt.clubId}
-                </div>
-                <p style="margin-top:8px; font-size:0.9rem;">${evt.description}</p>
+                <h4>${e.title}</h4>
+                <small style="color:#666;">Hosted by: ${e.clubName}</small>
+                <p>${e.desc}</p>
             </div>
-        `;
-    });
-
-    modalList.innerHTML = listHTML;
+        `).join("");
+    
+    }
     modal.classList.remove("hidden");
 }
-
-// Close Modal
-const closeModalBtn = document.getElementById("closeModal");
-const modalOverlay = document.getElementById("eventModal");
-
-if(closeModalBtn) {
-    closeModalBtn.addEventListener("click", () => {
-        modalOverlay.classList.add("hidden");
-    });
-}
-
-// Close on click outside
-window.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-        modalOverlay.classList.add("hidden");
-    }
-});

@@ -1,169 +1,91 @@
-🚀 inLoop 
-
-A unified campus platform to stay in the loop with student societies, events, and activities — all in one place.
-
-📌 Problem Statement
-
-Campus clubs and student societies often rely on scattered communication channels like WhatsApp groups, posters, and spreadsheets. This leads to missed events, information overload, and poor coordination.
-
-inLoop solves this by providing a single, structured platform where students can explore campus activities and clubs can manage events efficiently.
-
-🎯 What This Project Does
-
-Centralizes all campus societies and activities
-
-Shows real-time event updates
-
-Provides a unified master calendar
-
-Enables role-based access (Admin vs Student)
-
-Offers personalized notifications and reminders
-
-👥 User Roles
-👤 Student (User)
-
-Browse all registered societies
-
-Follow / unfollow societies
-
-View daily updates and events
-
-Access a merged master calendar
-
-Manage notifications and reminders
-
-🛠️ Society Admin
-
-Restricted access via pre-approved database
-
-Create and manage posts
-
-Add events to the society calendar
-
-Upload resources
-
-Add other admins (from whitelist only)
-
-🧭 App Structure
-🔐 Login Page
-
-Login using Email / Roll Number
-
-Role (Admin / User) assigned automatically
-
-🏠 Home Page
-
-Displays events happening today ± 2 days
-
-Important announcements highlighted
-
-Left sidebar:
-
-Followed societies
-
-Option to mark societies as important
-
-Top-right profile menu:
-
-Edit profile
-
-Change password
-
-Logout
-
-📅 Master Calendar
-
-Merged calendar of all society events
-
-Category-based visual indicators
-
-Filter events by society or tag
-
-🏷️ Societies Page
-
-Societies displayed as cards
-
-Categorized using tags:
-
-Tech
-
-Cultural
-
-Sports
-
-Fest
-
-Clicking a society opens its detail page
-
-Inside Each Society Page:
-
-Bottom navigation with:
-
-Posts
-
-Resources
-
-Event Calendar
-
-Members
-
-🧑‍💻 Tech Stack
-
-Frontend: HTML, CSS
-
-Design: Responsive, mobile-first UI
-
-Version Control: Git & GitHub
-
-Collaboration: Feature branches + Pull Requests
-
-(Backend and authentication planned for future versions)
-
-🤝 Team Collaboration Workflow
-
-main → Stable demo branch
-
-dev → Integration branch
-
-Feature Branches:
-
-login-ui
-
-home-page
-
-calendar-ui
-
-societies-page
-
-🌟 Why inLoop?
-
-Solves a real campus coordination problem
-
-Scalable across universities
-
-Clean role-based UI design
-
-Strong team collaboration workflow
-
-Demo-ready and practical
-
-📎 Future Enhancements
-
-Backend authentication & database
-
-Push notifications
-
-Event registrations
-
-Admin analytics dashboard
-
-🏁 Getting Started
-
-Clone the repository
-
-Open HTML files in a browser
-
-Start contributing using feature branches
-
-Built with ❤️ during a 36-hour hackathon to keep campus life inLoop.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - inLoop</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-layout">
+        <nav class="top-nav">
+            <div class="brand">
+                <i class="fas fa-graduation-cap"></i>
+                inLoop
+            </div>
+            <div class="user-menu">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="login.html" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                <div class="calendar-container">
+                    
+                    <div class="calendar-header">
+                        <div class="month-nav">
+                            <button id="prevMonth" class="nav-arrow"><i class="fas fa-chevron-left"></i></button>
+                            <h2 id="monthLabel">January 2026</h2>
+                            <button id="nextMonth" class="nav-arrow"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <button id="todayBtn">Today</button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="weekdays">
+                            <div class="weekday">Sun</div>
+                            <div class="weekday">Mon</div>
+                            <div class="weekday">Tue</div>
+                            <div class="weekday">Wed</div>
+                            <div class="weekday">Thu</div>
+                            <div class="weekday">Fri</div>
+                            <div class="weekday">Sat</div>
+                        </div>
+
+                        <div class="days" id="calendarDays"></div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="calendar.html" class="nav-item active">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar</span>
+            </a>
+            <a href="clubs.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Clubs</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="event-modal hidden" id="eventModal">
+        <div class="event-modal-card">
+            <div class="event-modal-header">
+                <h3 id="modalDateTitle">Selected Date</h3>
+                <button id="closeModal">&times;</button>
+            </div>
+            <div id="modalEventList">
+                </div>
+        </div>
+    </div>
+
+    <script src="./js/club-calendar.js"></script>
+
+</body>
+</html>
