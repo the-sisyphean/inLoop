@@ -1151,12 +1151,24 @@ button {
     height: 240px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: nowrap;
+    align-items:center ;
+    justify-content: space-evenly;
     position: relative;
     margin: calc(-1 * var(--spacing-xl));
     margin-bottom: var(--spacing-xl);
 }
+
+
+#clubActions{
+    min-width: 50px;
+}
+
+
+
+
+
+
 
 .club-detail-info {
     text-align: center;
@@ -1590,3 +1602,20 @@ button {
 #clubSearchInput:hover {
   border-color: #3a4b6b;
 }
+.club-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+

@@ -78,6 +78,7 @@
       <main class="main-content">
 
         <!-- Club Header -->
+         
         <div class="club-detail-header" style="background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);">
           <div class="club-detail-info">
             <div class="club-detail-logo">
@@ -88,6 +89,11 @@
               <i class="fas fa-laptop-code"></i> Tech
             </span>
           </div>
+          <div class="club-actions" id="clubActions">
+  <button class="btn primary" id="createPostBtn">+ Create Post</button>
+  
+  <button class="btn secondary" id="addEventBtn">+ Add Event</button>
+</div>
 
         </div>
 
@@ -98,6 +104,44 @@
             workshops, competitive programming, and guest lectures.
           </p>
         </div>
+<!-- createpost -->
+        <div class="login-container hidden" id="createclubform">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>inLoop</h1>
+                    <p>Create your Club</p>
+                </div>
+
+                <form id="form">
+                    <div class="form-group">
+                        <label for="clubName">Club Name </label>
+                        <input type="text" id="clubName" placeholder="e.g. Coding Club" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Description">Club Description</label>
+                        <textarea id="clubDesc" class="form-textarea" placeholder="Describe your club..."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clubTag">Field</label>
+                        <input type="text" id="clubTag" placeholder="e.g. Tech" required>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="createClub">
+                        Create Club
+                    </button>
+
+                    <button type="button" class="cancel-btn">
+                        Cancel
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+
    
         <!-- POSTS ONLY -->
         <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
@@ -162,41 +206,11 @@
       </main>
     </div>
 
-    <body>
-      <div class="main-layout">
-
-        <body>
-          <div class="main-layout">
-            <!-- Top Navigation -->
-            <nav class="top-nav">
-              <div class="brand">
-                <i class="fas fa-graduation-cap"></i>
-                <a href="home.html">inLoop</a>
-              </div>
-              <div class="user-menu">
-                <div class="user-avatar" data-testid="user-avatar">
-                  <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-menu" data-testid="user-dropdown">
-                  <!-- <a href="#" class="dropdown-item" data-testid="edit-profile-link">
-                        <i class="fas fa-user-edit"></i>
-                        Edit Profile
-                    </a> -->
-                  <a href="changepassword.html" class="dropdown-item" data-testid="change-password-link">
-                    <i class="fas fa-lock"></i>
-                    Change Password
-                  </a>
-                  <a href="login.html" class="dropdown-item" data-testid="logout-link">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                  </a>
-                </div>
-              </div>
-            </nav>
+   
 
             <div class="content-wrapper">
               <!-- Main Content -->
-              <main class="main-content" data-testid="calendar-main">
+              <main class="main-content hidden" data-testid="calendar-main">
                 <div class="calendar-container">
                   <div class="calendar-header">
                     <div class="month-nav">
@@ -244,11 +258,11 @@
       </div>
 
       <!-- Bottom Navigation -->
-      <nav class="bottom-nav">
+      <!-- <nav class="bottom-nav">
         <a href="club-detail.html" class="nav-item active">
           <i class="fas fa-newspaper"></i>
           <span>Posts</span>
-        </a>
+        </a> -->
         <!-- <a href="club-resources.html" class="nav-item">
         <i class="fas fa-folder"></i>
         <span>Resources</span>

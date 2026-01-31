@@ -207,3 +207,29 @@ todayBtn.onclick = () => {
 };
 
 renderCalendar();
+
+
+const clubActions = document.getElementById("clubActions");
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    clubActions.style.display = "none";
+    return;
+  }
+
+  const adminRef = doc(db, "clubAdmins", user.email);
+  const adminSnap = await getDoc(adminRef);
+
+  if (adminSnap.exists()) {
+    clubActions.style.display = "flex";
+  } else {
+    clubActions.style.display = "none";
+  }
+});
+document.getElementById("createPostBtn").onclick = () => {
+  window.location.href = "c";
+};
+
+document.getElementById("addEventBtn").onclick = () => {
+  window.location.href = "add-event.html";
+};
