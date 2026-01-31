@@ -577,8 +577,9 @@ button {
     transform: translateY(0px);
     transition: all 0.2s ease;
 }
+
 #adminmenu {
- left: 0;
+    left: 0;
 }
 
 
@@ -1356,39 +1357,40 @@ button {
     margin-bottom: 0.25rem;
     font-size: 1rem;
 }
+
 .modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
 .modal.hidden {
-  display: none;
+    display: none;
 }
 
 .modal-content {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 420px;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
 }
 
 .modal-content input,
 .modal-content textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.6rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
 }
 
 .modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }
 
 .member-role {
@@ -1497,19 +1499,19 @@ button {
     color: white;
 }
 
-#showsignup:hover{
+#showsignup:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
 .google-btn {
-  width: 100%;
-  padding: 12px;
-  background: #fff;
-  color: #000;
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .cancel-btn {
@@ -1534,7 +1536,7 @@ button {
 }
 
 .form-textarea {
-     width: 100%;
+    width: 100%;
     padding: 0.875rem 1rem;
     background: var(--bg-primary);
     border: 1px solid var(--border);
@@ -1546,76 +1548,180 @@ button {
 
 
 .admin-badge {
-  position: absolute;
-   z-index: 20;
-  top: 10px;
-  right: 10px;
-  background: #f0a729;
-  color: #1F2937;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 999px;
-  letter-spacing: 0.5px;
+    position: absolute;
+    z-index: 20;
+    top: 10px;
+    right: 10px;
+    background: #f0a729;
+    color: #1F2937;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
 }
 
 .club-search {
-  position: relative;
-  width: 600px;
+    position: relative;
+    width: 600px;
 }
 
 /* Search icon */
 .search-icon {
-  position: absolute;
-  top: 50%;
-  left: 16px;
-  transform: translateY(-50%);
-  color: #9aa4b2;
-  font-size: 14px;
-  pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #9aa4b2;
+    font-size: 14px;
+    pointer-events: none;
 }
 
 /* Input */
 #clubSearchInput {
-  width: 100%;
-  background: #1f2a44;
-  border: 1px solid #2f3e5c;
-  color: #fff;
-  padding: 12px 16px 12px 42px; /* LEFT SPACE for icon */
-  border-radius: 999px;
-  outline: none;
-  font-size: 14px;
-  transition: all 0.2s ease;
+    width: 100%;
+    background: #1f2a44;
+    border: 1px solid #2f3e5c;
+    color: #fff;
+    padding: 12px 16px 12px 42px;
+    /* LEFT SPACE for icon */
+    border-radius: 999px;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
 }
 
 #clubSearchInput::placeholder {
-  color: #9aa4b2;
+    color: #9aa4b2;
 }
 
 #clubSearchInput:focus {
-  border-color: #4f8cff;
-  box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.25);
+    border-color: #4f8cff;
+    box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.25);
 }
+
 .club-search:focus-within .search-icon {
-  color: #4f8cff;
+    color: #4f8cff;
 }
+
 #clubSearchInput:hover {
-  border-color: #3a4b6b;
-}
-.club-actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
+    border-color: #3a4b6b;
 }
 
-.btn {
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
+/* --- CALENDAR MODAL & ALARM STYLES --- */
+
+/* Modal Background (Dimmed) */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
+/* Hide Utility */
+.hidden {
+    display: none !important;
+}
 
+/* Modal Card */
+.event-modal-card {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.event-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#closeModal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Event Cards inside Modal */
+.event-card-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid #ccc;
+    /* Default border */
+}
+
+/* Category Colors */
+.event-card-item.border-tech {
+    border-left-color: #3b82f6;
+}
+
+.event-card-item.border-cultural {
+    border-left-color: #ef4444;
+}
+
+.event-card-item.border-sports {
+    border-left-color: #10b981;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 8px;
+}
+
+.bg-tech {
+    background-color: #3b82f6;
+}
+
+.bg-cultural {
+    background-color: #ef4444;
+}
+
+.bg-sports {
+    background-color: #10b981;
+}
+
+/* Alarm Button Layout */
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.alarm-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #999;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.alarm-btn:hover {
+    color: #555;
+    transform: scale(1.1);
+}
