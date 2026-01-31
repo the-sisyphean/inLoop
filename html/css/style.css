@@ -565,6 +565,7 @@ button {
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
+    /* left: 0; */
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -573,9 +574,13 @@ button {
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    transform: translateY(0px);
     transition: all 0.2s ease;
 }
+#adminmenu {
+ left: 0;
+}
+
 
 .user-menu:hover .dropdown-menu {
     opacity: 1;
@@ -1540,4 +1545,48 @@ button {
   padding: 4px 8px;
   border-radius: 999px;
   letter-spacing: 0.5px;
+}
+
+.club-search {
+  position: relative;
+  width: 600px;
+}
+
+/* Search icon */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #9aa4b2;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* Input */
+#clubSearchInput {
+  width: 100%;
+  background: #1f2a44;
+  border: 1px solid #2f3e5c;
+  color: #fff;
+  padding: 12px 16px 12px 42px; /* LEFT SPACE for icon */
+  border-radius: 999px;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+#clubSearchInput::placeholder {
+  color: #9aa4b2;
+}
+
+#clubSearchInput:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.25);
+}
+.club-search:focus-within .search-icon {
+  color: #4f8cff;
+}
+#clubSearchInput:hover {
+  border-color: #3a4b6b;
 }
