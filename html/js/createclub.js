@@ -17,7 +17,7 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, set, child, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-import { doc, getDoc, updateDoc, setDoc, serverTimestamp,collection,addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+import { getFirestore, getDocs,query,where, doc, getDoc, updateDoc, setDoc, serverTimestamp,collection,addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
 const createClub = document.querySelector("#createClub");
 
@@ -44,8 +44,53 @@ createClub.addEventListener("click", async (e) => {
     });
 
     alert("✅ Club created successfully!");
+    
+
   } catch (err) {
     console.error(err);
     alert(err.code);
   }
 });
+
+//load clubs
+
+
+const clubsRef = collection(fs, "clubs");
+const clubsContainer = document.getElementById("clubsContainer");
+
+async function loadClubs(category = "All") {
+  clubsContainer.innerHTML = "";
+
+  let q = clubsRef;
+  if (category !== "All") {
+    q = query(clubsRef, where("category", "==", category));
+  }
+
+  const snapshot = await getDocs(q);
+
+  snapshot.forEach(doc => {
+    const club = doc.data();
+    clubsContainer.innerHTML += clubCard(club);
+  });
+}
+function clubCard(club) {
+  return `
+    <div class="club-card">
+      <div class="club-header ${club.category.toLowerCase()}">
+        <div class="club-icon">${club.icon || "🏫"}</div>
+      </div>
+
+      <div class="club-body">
+        <h3>${club.name}</h3>
+
+        <span class="badge ${club.category.toLowerCase()}">
+          ${club.category}
+        </span>
+
+        <p>${club.description}</p>
+
+        
+      </div>
+    </div>
+  `;
+}
